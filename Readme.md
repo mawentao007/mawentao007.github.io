@@ -33,3 +33,7 @@ publish
         $ ./submit.sh  blogname
 
 
+Attention
+---
+        
+        $日志相关操作都要将.git目录拷贝到output下，或者简单用submit提交，all branch相关操作要在根目录下进行，这是对所有文件的操作。
