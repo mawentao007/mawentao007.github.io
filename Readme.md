@@ -27,8 +27,9 @@ Preview site
 publish        
 ---
 
-        $ pip install ghp-import
         $ make publish
-        $ ghp-import -b master output
-        $ git push master
+将当前目录下的submit.sh拷贝到上一级目录，同时将.git文件拷贝到上一级目录：
+
+        $ ./submit.sh  blogname
+
 
