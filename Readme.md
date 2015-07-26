@@ -41,11 +41,11 @@ SITURL可以在publishconf.py中配置，这样对于本地预览比较方便。
 theme
 ---
 
-        pelican-theme -i themePath 
+        $ pelican-theme -i themePath 
 Attention
 ---
         
-        $用submit脚本可以完成生成和提交工作！
+        $ 用submit脚本可以完成生成和提交工作！
 Todo list
 ---
 + google 统计
