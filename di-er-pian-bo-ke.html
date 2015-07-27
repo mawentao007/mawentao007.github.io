@@ -23,12 +23,12 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
     <!-- CSS TEMPLATE -->
-    <link href="http://scalaboy.top/theme/css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="http://scalaboy.top/theme/css/framework.css" rel="stylesheet" type="text/css" />
-    <link href="http://scalaboy.top/theme/css/typography.css" rel="stylesheet" type="text/css" />
-    <link href="http://scalaboy.top/theme/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/css/framework.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/css/typography.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/css/layout.css" rel="stylesheet" type="text/css" />
 
-    <link href="http://scalaboy.top/theme/css/blog.css" rel="stylesheet" type="text/css" />
+    <link href="/theme/css/blog.css" rel="stylesheet" type="text/css" />
 
     <!-- ICONS -->
 
@@ -36,7 +36,7 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
     <!-- Morenizr -->
-    <script type="text/javascript" src="http://scalaboy.top/theme/js/modernizr.min.js"></script>
+    <script type="text/javascript" src="/theme/js/modernizr.min.js"></script>
 
     <!-- google authorship -->
 </head>
@@ -54,7 +54,7 @@
 
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="http://scalaboy.top/blog.html">
+        <a class="navbar-brand" href="/blog.html">
           <!--img src="" alt="" width="50" height="50" /-->
           <span class="hidden-xs">Marvin&#39;s Blog</span>
         </a>
@@ -68,10 +68,10 @@
 
         <ul class="nav navbar-nav navbar-right">
           <!-- If the user wants to make articles the home page then remove blog link, and make about and work links point to old home page. -->
-            <li><a href="http://scalaboy.top/blog.html">Home</a></li>
-            <li><a href="http://scalaboy.top/index.html">About</a></li>
-            <li><a href="http://scalaboy.top/archives.html">Archives</a></li-->
-            <!--li><a href="http://scalaboy.top/blog.html">Blog</a></li-->
+            <li><a href="/blog.html">Home</a></li>
+            <li><a href="/index.html">About</a></li>
+            <li><a href="/archives.html">Archives</a></li-->
+            <!--li><a href="/blog.html">Blog</a></li-->
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -84,36 +84,32 @@
 
       <div class="row">
         <div id="blog_main_area" class="left col-md-9">
-  <!-- blog item -->
+  <!-- article title -->
+  <header>
+      <h1>第二篇博客</h1>
+    <small class="fsize13">
+            <a href="/category/sui-bi.html" rel="tag tooltip" class="label label-default light" data-placement="right" data-original-title="2 articles in this category"><i class="fa fa-dot-circle-o"></i> 随笔</a>
+      <!--a href="\{\{ SITEURL }}/\{\{article.url}}#disqus_thread" class="scrollTo label label-default light" data-disqus-identifier="\{\{article.url}}"><i class="fa fa-comment-o"></i> ?? Comments</a-->
+      <span class="label label-default light">25/ 7月/2012 三</span> 
+    </small>
+  </header>
 
-      <div class="item">
-        <div class="item-title">
-            <h2><a class="theme_link" href="http://scalaboy.top/suo-hua.html">琐话</a></h2>
-          <a href="category/sui-bi.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 随笔</a> 
-          <!--a href="\{\{ SITEURL }}/\{\{ article.url }}#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a-->
-          <span class="label label-default light">27/ 7月/2015 一</span>
-        </div>
-        <!-- image -->
+  <article class='content'>
+    <p>着急</p>
+  </article>
 
-        <!-- blog short preview -->
-            <p>&ensp;&ensp;&ensp;&ensp;花了两天把这个博客搭好了，是该认真分享点东西了。</p>
-<p>&ensp;&ensp;&ensp;&ensp;Evernote也会随时记笔记，而且效果还不错。但是毕竟是自己看的，遇到一些难度大一点的东西，整理起来就不够细心，效果也就差不少。写博客，这是为己。</p>
-<p>&ensp;&ensp;&ensp;&ensp;中文资料相对较少，尤其是一些国外兴起不久的技术，百度出来的惨不忍睹，一千个人有一千个说法。希望能把自己理解出来的整理好，发出来。写博客，希望为人。</p>
-<p>&ensp;&ensp;&ensp;&ensp;开工！</p>
+  <div class="divider"><!-- lines divider --></div>
 
-        <!-- read more button -->
-        <a href="http://scalaboy.top/suo-hua.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
-      </div>
+  <!-- SOCIAL -->
  
- 
-  <!-- /blog item -->
+  
 
-  <!-- PAGINATION -->
-  <ul class="pagination">
-    <li id="prev" class="prev disabled"><a class="theme_link" rel="prev">&larr; Previous</a></li>
-    <li id="next" class="next"><a class="theme_link" rel="next">&rarr; Next</a></li>
-  </ul>
-  <!-- /PAGINATION -->
+  <!-- TAGS -->
+  <p class="fsize16"> Tags:
+  </p>
+
+  <hr /><!-- divider -->
+
         </div>
 
         <!-- SIDEBAR -->
@@ -124,23 +120,23 @@
                       <h3>Recent Work</h3>
 
                       <a class="popup-image thumb" href="assets/images/preview/slider/1.jpg">
-                          <img src="http://scalaboy.top/theme/img/1x1.png" class="img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
+                          <img src="/theme/img/1x1.png" class="img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
                       </a>
                       <a class="popup-video thumb" href="http://www.youtube.com/watch?v=kh29_SERH0Y?rel=0">
-                          <img src="http://scalaboy.top/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
                       </a>
                       <a class="popup-video thumb" href="http://vimeo.com/23630702">
-                          <img src="http://scalaboy.top/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
                       </a>
 
                       <a class="external ajax-project thumb" href="project-external-1.html">
-                          <img src="http://scalaboy.top/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
                       </a>
                       <a class="external ajax-project thumb" href="project-external-2.html">
-                          <img src="http://scalaboy.top/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#888:#555555/auto/" alt="img" />
                       </a>
                       <a class="external ajax-project thumb" href="project-external-3.html">
-                          <img src="http://scalaboy.top/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
+                          <img src="/theme/img/1x1.png" class="ajax-project img-responsive" data-src="holder.js/85x85/#676767:#555555/auto/" alt="img" />
                       </a>
 
                       <div class="clearfix"></div>
@@ -152,7 +148,7 @@
             <h3>Categories</h3>
 
             <ul>
-               <li><a class="theme_link" href="http://scalaboy.top/category/sui-bi.html"><i class="fa fa-dot-circle-o"></i> 随笔</a>
+               <li><a class="theme_link" href="/category/sui-bi.html"><i class="fa fa-dot-circle-o"></i> 随笔</a>
               </li>
             </ul>
 
@@ -166,6 +162,7 @@
             <!-- Get all of the articles with their dates -->
             <div class="hidden">
                 None
+                None
             </div>
 
             <!-- If the user indicates they prefer a list.-->                <ul class="tree">
@@ -176,8 +173,19 @@
                                 <span><i class="fa fa-plus-square-o"></i>07</span>
                                 <ul>
                                         <li style="display: none;">
-                                            <a class="theme_link" href="http://scalaboy.top/suo-hua.html">
-                                            <small>27/ 7月/2015 一</small>琐话</a>
+                                            <a class="theme_link" href="/di-pian-bo-ke.html">
+                                            <small>25/ 7月/2015 六</small>第一篇博客</a>
+                                        </li>
+                                </ul>
+                            </li>
+                        </ul>                        <span><i class="fa fa-minus-square-o"></i>2012</span>
+                        <ul>
+                            <li>
+                                <span><i class="fa fa-plus-square-o"></i>07</span>
+                                <ul>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="/di-er-pian-bo-ke.html">
+                                            <small>25/ 7月/2012 三</small>第二篇博客</a>
                                         </li>
                                 </ul>
                             </li>
@@ -202,17 +210,13 @@
   <div class="container">
 
     <div class="row">
-        <div class="col-md-4 text-left">
-              <br />Thanks To <a class="theme_link" href="http://docs.getpelican.com/" target="_blank">Pelican</a> For Generator
-              <br />and <a class="theme_link" href="https://github.com/KenMercusLai/BT3-Flat" target="_blank">Ken Lai</a> For Theme
-        </div>
 
-        <div class="col-md-4 text-center copyright">
+        <div class="col-md-6 copyright">
             Marvin&#39;s Blog
             <br />2015 &copy; All Rights Reserved.
         </div>
 
-        <div class="col-md-4 text-right">
+        <div class="col-md-6 text-right">
               <a href="http://weibo.com/p/1005051799756001" class="social fa fa-weibo" target="_blank"></a>
               <a href="https://github.com/mawentao007" class="social fa fa-github" target="_blank"></a>
         </div>
@@ -228,25 +232,25 @@
 <!-- CORE FILES -->
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.isotope.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/masonry.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.isotope.js"></script>
+<script type="text/javascript" src="/theme/js/masonry.js"></script>
 
 <!-- PLUGINS -->
-<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.fitvids.min.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.appear.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.superslides.min.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.countTo.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/holder.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.fitvids.min.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.appear.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.superslides.min.js"></script>
+<script type="text/javascript" src="/theme/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.countTo.js"></script>
+<script type="text/javascript" src="/theme/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="/theme/js/holder.js"></script>
 <!-- delete on production -->
 
 <!-- js scripts -->
-<script async type="text/javascript" src="http://scalaboy.top/theme/js/scripts.js"></script>
+<script async type="text/javascript" src="/theme/js/scripts.js"></script>
 
-<script type="text/javascript" src="http://scalaboy.top/theme/js/ImageAutoResize.js"></script>
-<script type="text/javascript" src="http://scalaboy.top/theme/js/application.js"></script>
+<script type="text/javascript" src="/theme/js/ImageAutoResize.js"></script>
+<script type="text/javascript" src="/theme/js/application.js"></script>
 
 
 
