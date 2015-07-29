@@ -89,39 +89,273 @@
 
       <div class="item">
         <div class="item-title">
-            <h2><a class="theme_link" href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html">程序员修炼之道-前言</a></h2>
-          <a href="category/du-shu-bi-ji.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 读书笔记</a> 
+            <h2><a class="theme_link" href="http://scalaboy.top/java-nio-1-jiao-cheng.html">Java NIO-1 教程</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
           <!--a href="\{\{ SITEURL }}/\{\{ article.url }}#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a-->
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+            <p>Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。</p>
+<h2>Java NIO：通道和缓冲区</h2>
+<p>在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。</p>
+<h2>Java NIO：非阻塞IO</h2>
+<p>Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。</p>
+<h2>Java NIO：Selectors</h2>
+<p>Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。</p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-1-jiao-cheng.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item">
+        <div class="item-title">
+            <h2><a class="theme_link" href="http://scalaboy.top/java-nio-2-gai-shu.html">Java NIO-2 概述</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <!--a href="\{\{ SITEURL }}/\{\{ article.url }}#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a-->
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+            <p>Java NIO包含如下核心组件：
++ 通道
++ 缓冲区
++ 选择器</p>
+<p>Java NIO除了这写还有很多类和组件，但是我认为这三者是API的核心。其它组件，例如管道（Pipe）和文件锁（FileLock）等仅仅是辅助联结这三个核心组件进行工作的工具类。因此，我将会在本章重点讲这三个组件。其它组件将会在其它章节涉及。</p>
+<h2>通道和缓冲区</h2>
+<p>所有的IO和NIO都是由通道开始。一个通道就像一个流。数据可以从通道读入缓冲区，也可以由缓冲区写入通道。下图是一个简单描述：
+<img alt="" src="http://scalaboy.top/blogPicture/overview-channels-buffers.png" /></p>
+<h6>&ensp;&ensp;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道</h6>
+<p>通道和缓冲区有很多类型。如下列举了Java NIO实现的一些初级通道类型：
++ FileChannel
++ DatagramChannel
++ SocketChannel
++ ServerSocketChannel</p>
+<p>不难看出，这些通道的类型覆盖了UDP+TCP网络IO，还有文件IO
+如下是Java NIO中实现的核心缓冲区的列表：
++ ByteBuffer
++ CharBuffer
++ DoubleBuffer
++ FloatBuffer
++ IntBuffer
++ LongBuffer
++ ShortBuffer</p>
+<p>这些缓冲区覆盖了IO中可以利用的数据的基本类型：byte，short ...</p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-2-gai-shu.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item">
+        <div class="item-title">
+            <h2><a class="theme_link" href="http://scalaboy.top/java-nio-3-jiao-cheng.html">Java NIO-3 教程</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <!--a href="\{\{ SITEURL }}/\{\{ article.url }}#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a-->
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+            <p>Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。</p>
+<h2>Java NIO：通道和缓冲区</h2>
+<p>在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。</p>
+<h2>Java NIO：非阻塞IO</h2>
+<p>Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。</p>
+<h2>Java NIO：Selectors</h2>
+<p>Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。</p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-3-jiao-cheng.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item">
+        <div class="item-title">
+            <h2><a class="theme_link" href="http://scalaboy.top/java-nio-4-jiao-cheng.html">Java NIO-4 教程</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <!--a href="\{\{ SITEURL }}/\{\{ article.url }}#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a-->
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+            <p>Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。</p>
+<h2>Java NIO：通道和缓冲区</h2>
+<p>在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。</p>
+<h2>Java NIO：非阻塞IO</h2>
+<p>Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。</p>
+<h2>Java NIO：Selectors</h2>
+<p>Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。</p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-4-jiao-cheng.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item">
+        <div class="item-title">
+            <h2><a class="theme_link" href="http://scalaboy.top/java-nio-5-jiao-cheng.html">Java NIO-5 教程</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <!--a href="\{\{ SITEURL }}/\{\{ article.url }}#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a-->
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+            <p>Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。</p>
+<h2>Java NIO：通道和缓冲区</h2>
+<p>在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。</p>
+<h2>Java NIO：非阻塞IO</h2>
+<p>Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。</p>
+<h2>Java NIO：Selectors</h2>
+<p>Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。</p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-5-jiao-cheng.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item">
+        <div class="item-title">
+            <h2><a class="theme_link" href="http://scalaboy.top/java-nio-6-jiao-cheng.html">Java NIO-6 教程</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <!--a href="\{\{ SITEURL }}/\{\{ article.url }}#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a-->
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+            <p>Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。</p>
+<h2>Java NIO：通道和缓冲区</h2>
+<p>在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。</p>
+<h2>Java NIO：非阻塞IO</h2>
+<p>Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。</p>
+<h2>Java NIO：Selectors</h2>
+<p>Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。</p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-6-jiao-cheng.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+ 
+      <div class="item" style="display: none;">
+        <div class="item-title">
+            <h2><a href="http://scalaboy.top/java-nio-7-jiao-cheng.html">Java NIO-7 教程</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <a href="http://scalaboy.top/java-nio-7-jiao-cheng.html#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+        <p>
+            <p>Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。</p>
+<h2>Java NIO：通道和缓冲区</h2>
+<p>在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。</p>
+<h2>Java NIO：非阻塞IO</h2>
+<p>Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。</p>
+<h2>Java NIO：Selectors</h2>
+<p>Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。</p>
+        </p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-7-jiao-cheng.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item" style="display: none;">
+        <div class="item-title">
+            <h2><a href="http://scalaboy.top/java-nio-8-jiao-cheng.html">Java NIO-8 教程</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <a href="http://scalaboy.top/java-nio-8-jiao-cheng.html#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+        <p>
+            <p>Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。</p>
+<h2>Java NIO：通道和缓冲区</h2>
+<p>在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。</p>
+<h2>Java NIO：非阻塞IO</h2>
+<p>Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。</p>
+<h2>Java NIO：Selectors</h2>
+<p>Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。</p>
+        </p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-8-jiao-cheng.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item" style="display: none;">
+        <div class="item-title">
+            <h2><a href="http://scalaboy.top/java-nio-9-jiao-cheng.html">Java NIO-9 教程</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <a href="http://scalaboy.top/java-nio-9-jiao-cheng.html#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+        <p>
+            <p>Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。</p>
+<h2>Java NIO：通道和缓冲区</h2>
+<p>在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。</p>
+<h2>Java NIO：非阻塞IO</h2>
+<p>Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。</p>
+<h2>Java NIO：Selectors</h2>
+<p>Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。</p>
+        </p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-9-jiao-cheng.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item" style="display: none;">
+        <div class="item-title">
+            <h2><a href="http://scalaboy.top/java-nio-qian-yan.html">Java NIO 前言</a></h2>
+          <a href="category/java.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> JAVA</a> 
+          <a href="http://scalaboy.top/java-nio-qian-yan.html#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
+          <span class="label label-default light">29/ 7月/2015 三</span>
+        </div>
+        <!-- image -->
+
+        <!-- blog short preview -->
+        <p>
+            <p>在网上看到一篇很不错的Java NIO的教程，相信google过的同学都看到过，地址：http://tutorials.jenkov.com/java-nio/index.html。</p>
+<p>我想翻译过来，方便日后学习同时可以自己增加一些理解。</p>
+        </p>
+
+        <!-- read more button -->
+        <a href="http://scalaboy.top/java-nio-qian-yan.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
+      </div>
+      <div class="item" style="display: none;">
+        <div class="item-title">
+            <h2><a href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html">程序员修炼之道-前言</a></h2>
+          <a href="category/du-shu-bi-ji.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 读书笔记</a> 
+          <a href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
           <span class="label label-default light">28/ 7月/2015 二</span>
         </div>
         <!-- image -->
 
         <!-- blog short preview -->
+        <p>
             <p>最近在读《程序员修炼之道》书很轻巧易懂，但是很多观点的确让人茅塞顿开。</p>
 <p>写下这个系列，记录自己的读书心得，指导日后学习生活。</p>
+        </p>
 
         <!-- read more button -->
         <a href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
       </div>
-      <div class="item">
+      <div class="item" style="display: none;">
         <div class="item-title">
-            <h2><a class="theme_link" href="http://scalaboy.top/suo-hua.html">琐话</a></h2>
+            <h2><a href="http://scalaboy.top/suo-hua.html">琐话</a></h2>
           <a href="category/sui-bi.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 随笔</a> 
-          <!--a href="\{\{ SITEURL }}/\{\{ article.url }}#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a-->
+          <a href="http://scalaboy.top/suo-hua.html#disqus_thread" class="label label-default light"><i class="fa fa-comment-o"></i> ?? Comments</a>
           <span class="label label-default light">27/ 7月/2015 一</span>
         </div>
         <!-- image -->
 
         <!-- blog short preview -->
+        <p>
             <p>&ensp;&ensp;&ensp;&ensp;花了两天把这个博客搭好了，是该认真分享点东西了。</p>
 <p>&ensp;&ensp;&ensp;&ensp;Evernote也会随时记笔记，而且效果还不错。但是毕竟是自己看的，遇到一些难度大一点的东西，整理起来就不够细心，效果也就差不少。</p>
 <p>&ensp;&ensp;&ensp;&ensp;中文资料相对较少，尤其是一些国外兴起不久的技术。希望能把自己接触到的东西，自己的理解整理分享出来。</p>
 <p>&ensp;&ensp;&ensp;&ensp;开工！</p>
+        </p>
 
         <!-- read more button -->
         <a href="http://scalaboy.top/suo-hua.html" class="btn btn-xs theme_link"><i class="fa fa-sign-out"></i> READ MORE</a>
       </div>
- 
  
   <!-- /blog item -->
 
@@ -171,6 +405,8 @@
             <ul>
                <li><a class="theme_link" href="http://scalaboy.top/category/du-shu-bi-ji.html"><i class="fa fa-dot-circle-o"></i> 读书笔记</a>
               </li>
+              <li><a class="theme_link" href="http://scalaboy.top/category/java.html"><i class="fa fa-dot-circle-o"></i> JAVA</a>
+              </li>
               <li><a class="theme_link" href="http://scalaboy.top/category/sui-bi.html"><i class="fa fa-dot-circle-o"></i> 随笔</a>
               </li>
             </ul>
@@ -186,6 +422,16 @@
             <div class="hidden">
                 None
                 None
+                None
+                None
+                None
+                None
+                None
+                None
+                None
+                None
+                None
+                None
             </div>
 
             <!-- If the user indicates they prefer a list.-->                <ul class="tree">
@@ -195,6 +441,46 @@
                             <li>
                                 <span><i class="fa fa-plus-square-o"></i>07</span>
                                 <ul>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-1-jiao-cheng.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-1 教程</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-2-gai-shu.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-2 概述</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-3-jiao-cheng.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-3 教程</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-4-jiao-cheng.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-4 教程</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-5-jiao-cheng.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-5 教程</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-6-jiao-cheng.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-6 教程</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-7-jiao-cheng.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-7 教程</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-8-jiao-cheng.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-8 教程</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-9-jiao-cheng.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO-9 教程</a>
+                                        </li>
+                                        <li style="display: none;">
+                                            <a class="theme_link" href="http://scalaboy.top/java-nio-qian-yan.html">
+                                            <small>29/ 7月/2015 三</small>Java NIO 前言</a>
+                                        </li>
                                         <li style="display: none;">
                                             <a class="theme_link" href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html">
                                             <small>28/ 7月/2015 二</small>程序员修炼之道-前言</a>
@@ -211,8 +497,8 @@
             <h3>Tags</h3>
            <ul>
              <span class="tag-4">
-              <a class="sidebar-tag" href="http://scalaboy.top/tag/sui-bi.html">
-              <i class=" fa fa-tag fa-fw fa-lg"></i>随笔
+              <a class="sidebar-tag" href="http://scalaboy.top/tag/cheng-xu-yuan-xiu-lian-zhi-dao.html">
+              <i class=" fa fa-tag fa-fw fa-lg"></i>程序员修炼之道
               </a>
              </span>
              <span class="tag-4">
@@ -220,14 +506,29 @@
               <i class=" fa fa-tag fa-fw fa-lg"></i>博客
               </a>
              </span>
+             <span class="tag-1">
+              <a class="sidebar-tag" href="http://scalaboy.top/tag/jiao-cheng.html">
+              <i class=" fa fa-tag fa-fw fa-lg"></i>教程
+              </a>
+             </span>
              <span class="tag-4">
               <a class="sidebar-tag" href="http://scalaboy.top/tag/du-shu-bi-ji.html">
               <i class=" fa fa-tag fa-fw fa-lg"></i>读书笔记
               </a>
              </span>
+             <span class="tag-1">
+              <a class="sidebar-tag" href="http://scalaboy.top/tag/nio.html">
+              <i class=" fa fa-tag fa-fw fa-lg"></i>NIO
+              </a>
+             </span>
+             <span class="tag-1">
+              <a class="sidebar-tag" href="http://scalaboy.top/tag/java.html">
+              <i class=" fa fa-tag fa-fw fa-lg"></i>JAVA
+              </a>
+             </span>
              <span class="tag-4">
-              <a class="sidebar-tag" href="http://scalaboy.top/tag/cheng-xu-yuan-xiu-lian-zhi-dao.html">
-              <i class=" fa fa-tag fa-fw fa-lg"></i>程序员修炼之道
+              <a class="sidebar-tag" href="http://scalaboy.top/tag/sui-bi.html">
+              <i class=" fa fa-tag fa-fw fa-lg"></i>随笔
               </a>
              </span>
           </ul>
