@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Marvin's Blog</title><link href="http://scalaboy.top/" rel="alternate"></link><link href="http://scalaboy.top/feeds/java.atom.xml" rel="self"></link><id>http://scalaboy.top/</id><updated>2015-07-29T00:00:00+08:00</updated><entry><title>Java NIO-1 教程</title><link href="http://scalaboy.top/java-nio-1-jiao-cheng.html" rel="alternate"></link><updated>2015-07-29T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-29:java-nio-1-jiao-cheng.html</id><summary type="html">&lt;p&gt;Java NIO(New IO)是Java API中一个可选的IO接口，可以用来作为标准Java IO和Java网络接口之外的一个选择方案。Java NIO提供一个不同和标准IO不同的IO方式。&lt;/p&gt;
-&lt;h4&gt;Java NIO：通道和缓冲区&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Java NIO：通道和缓冲区&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在标准的IO API中，通信是以字节流或者字符流来进行的。而在NIO中则需要和通道（channel）以及缓冲区（buffers）打交道。数据通常由通道读入缓冲区，或者由缓冲区写入通道。&lt;/p&gt;
-&lt;h4&gt;Java NIO：非阻塞IO&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Java NIO：非阻塞IO&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。&lt;/p&gt;
-&lt;h4&gt;Java NIO：Selectors&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Java NIO：Selectors&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry><entry><title>Java NIO-2 概述</title><link href="http://scalaboy.top/java-nio-2-gai-shu.html" rel="alternate"></link><updated>2015-07-29T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-29:java-nio-2-gai-shu.html</id><summary type="html">&lt;p&gt;Java NIO包含如下核心组件：
 + 通道
 + 缓冲区
