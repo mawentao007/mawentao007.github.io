@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Marvin's Blog</title><link href="http://scalaboy.top/" rel="alternate"></link><link href="http://scalaboy.top/feeds/du-shu-bi-ji.atom.xml" rel="self"></link><id>http://scalaboy.top/</id><updated>2015-07-28T00:00:00+08:00</updated><entry><title>程序员修炼之道-前言</title><link href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html" rel="alternate"></link><updated>2015-07-28T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-28:cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html</id><summary type="html">&lt;p&gt;最近在读《程序员修炼之道》书很轻巧易懂，但是很多观点的确让人茅塞顿开。&lt;/p&gt;
-&lt;p&gt;写下这个系列，记录自己的读书心得，指导日后学习生活。&lt;/p&gt;</summary><category term="读书笔记"></category><category term="程序员修炼之道"></category></entry><entry><title>《程序员修炼之道》</title><link href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao.html" rel="alternate"></link><updated>2015-07-27T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-27:cheng-xu-yuan-xiu-lian-zhi-dao.html</id><summary type="html">&lt;p&gt;床边一直摆着这本书，偶尔翻一翻，遇到让自己觉得很不错的观点就记一下。不得不说，这本书的很多观点非常使用，有时候甚至让人有醍醐灌顶的感觉。本文是读书心得，参照原书，但是多有修改删减，添加自身体会。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Marvin's Blog</title><link href="http://scalaboy.top/" rel="alternate"></link><link href="http://scalaboy.top/feeds/du-shu-bi-ji.atom.xml" rel="self"></link><id>http://scalaboy.top/</id><updated>2015-07-31T00:00:00+08:00</updated><entry><title>《程序员修炼之道》</title><link href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao.html" rel="alternate"></link><updated>2015-07-31T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-31:cheng-xu-yuan-xiu-lian-zhi-dao.html</id><summary type="html">&lt;p&gt;床边一直摆着这本书，偶尔翻一翻，遇到让自己觉得很不错的观点就记一下。不得不说，这本书的很多观点非常使用，有时候甚至让人有醍醐灌顶的感觉。本文是读书心得，参照原书，但是多有修改删减，添加自身体会。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;知识资产&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -22,4 +21,5 @@
 &lt;li&gt;++&lt;em&gt;阅读非技术书籍&lt;/em&gt;++。强烈推荐，抛开一切，技术只能让你收入更高，效率更高，但是人活着不能只为了工作。“杂书”教会你生活。&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;参与开源项目和社区&lt;/em&gt;。这是我期望将来能做到的，和大家一起交流学习进步，其乐无穷。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;</summary><category term="程序员修炼之道，读书笔记"></category></entry></feed>
+&lt;hr /&gt;</summary><category term="程序员修炼之道，读书笔记"></category></entry><entry><title>程序员修炼之道-前言</title><link href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html" rel="alternate"></link><updated>2015-07-28T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-28:cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html</id><summary type="html">&lt;p&gt;最近在读《程序员修炼之道》书很轻巧易懂，但是很多观点的确让人茅塞顿开。&lt;/p&gt;
+&lt;p&gt;写下这个系列，记录自己的读书心得，指导日后学习生活。&lt;/p&gt;</summary><category term="读书笔记"></category><category term="程序员修炼之道"></category></entry></feed>

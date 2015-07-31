@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Marvin's Blog</title><link>http://scalaboy.top/</link><description></description><atom:link href="http://scalaboy.top/feeds/marvin.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 31 Jul 2015 00:00:00 +0800</lastBuildDate><item><title>Java NIO-3 Channel</title><link>http://scalaboy.top/java-nio-3-channel.html</link><description>&lt;p&gt;Java NIO通道和流在很多方面比较相似，但是还是有一些区别：&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Marvin's Blog</title><link>http://scalaboy.top/</link><description></description><atom:link href="http://scalaboy.top/feeds/marvin.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 31 Jul 2015 00:00:00 +0800</lastBuildDate><item><title>《程序员修炼之道》</title><link>http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao.html</link><description>&lt;p&gt;床边一直摆着这本书，偶尔翻一翻，遇到让自己觉得很不错的观点就记一下。不得不说，这本书的很多观点非常使用，有时候甚至让人有醍醐灌顶的感觉。本文是读书心得，参照原书，但是多有修改删减，添加自身体会。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;知识资产&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;知识上的投资总能得到最好的汇报。　－本杰明.富兰克林&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;毫无疑问，知识永远是最重要的生产力之一。而对于程序员来讲，知识显得尤其重要。因为这个行业的特殊性，知识更迭异常迅速。虽然有些东西是万变不离其宗的，但是不可否认的是，有些技术的的确确会过时，甚至逼近一无是处。我们能做的，就是不断给自己充电。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;经营知识资产&lt;/strong&gt;
+文中提到了几种经营知识资产的办法。&lt;/p&gt;
+&lt;p&gt;+　&lt;em&gt;定期投资&lt;/em&gt;。学海无涯，多读书，多关注技术领域，永远不要停止学习，给自己充电。这是给现在，更是给未来的自己的一个忠告。
++　&lt;em&gt;多元化&lt;/em&gt;。广泛涉猎，不要局限于某一个特定的技术领域，培养全方位立体的认知体系，从各个角度思考问题。个人认为，这个多元化应该超出技术范围，人文领域的东西也许能带来更多启发。
++　&lt;em&gt;管理风险&lt;/em&gt;。学习新知识不代表应该随大流，见别人学什么自己学什么。人的精力是有限的，要认真评估相关知识的潜力，可能带来的收益，投入产出比。当然，这种评估很多时候是形而上的，这就需要多下功夫了解，多向高手讨教。
++　&lt;em&gt;温故知新&lt;/em&gt;。知识需要温习，要学会温习。随着人阅历，知识储备的增加，看问题的高度和深度不同，曾经学过的东西复习的时候很可能获得新的启发。况且，温习巩固已有的东西本来就是很重要的。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;每年至少学习一门新语言&lt;/em&gt;。新语言不是万能的，但是不会新语言是万万不能的。新语言往往代表着学界工业界对于编程语言能带来的东西的期望，也预示着发展方向。比如近些年具备大规模并行支持的语言盛行。本人是Scala拥趸，对于Clojure、Go、Erlang都有兴趣，当然还有rust。下一门准备看Clojure，看看这个比Scala纯的函数式语言是什么样子。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;每季度阅读一本技术书籍&lt;/em&gt;。这个要求我觉得不算高，不过我个人更倾向于手边有书随时看，而不拘泥与看哪一本。关键是：看！&lt;/li&gt;
+&lt;li&gt;++&lt;em&gt;阅读非技术书籍&lt;/em&gt;++。强烈推荐，抛开一切，技术只能让你收入更高，效率更高，但是人活着不能只为了工作。“杂书”教会你生活。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;参与开源项目和社区&lt;/em&gt;。这是我期望将来能做到的，和大家一起交流学习进步，其乐无穷。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Fri, 31 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-31:cheng-xu-yuan-xiu-lian-zhi-dao.html</guid><category>程序员修炼之道，读书笔记</category></item><item><title>Java NIO-3 Channel</title><link>http://scalaboy.top/java-nio-3-channel.html</link><description>&lt;p&gt;Java NIO通道和流在很多方面比较相似，但是还是有一些区别：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;你可以向一个通道中写入或者读出数据，但是流只能单向操作（读或者写）&lt;/li&gt;
 &lt;li&gt;通道支持异步读写&lt;/li&gt;
@@ -138,29 +160,7 @@ Java NIO也有MappedByteBuffer，可以结合内存映射文件使用。这部�
 &lt;p&gt;&lt;strong&gt;&amp;ensp;&amp;ensp;Java NIO：单线程利用选择器处理多通道&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;首先要注册通道到选择器，之后通过调用select()开始工作。这个方法将会阻塞线程直到某个已经注册的通道完成工作并触发事件。一旦方法返回，线程就可以着手处理这些事件。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Wed, 29 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-29:java-nio-2-gai-shu.html</guid><category>NIO</category><category>教程</category><category>JAVA</category></item><item><title>Java NIO 前言</title><link>http://scalaboy.top/java-nio-qian-yan.html</link><description>&lt;p&gt;在网上看到一篇很不错的Java NIO的教程，相信google过的同学都看到过，地址：http://tutorials.jenkov.com/java-nio/index.html。&lt;/p&gt;
 &lt;p&gt;我想翻译过来，方便日后学习同时可以自己增加一些理解。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Wed, 29 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-29:java-nio-qian-yan.html</guid><category>NIO</category><category>教程</category><category>JAVA</category></item><item><title>程序员修炼之道-前言</title><link>http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html</link><description>&lt;p&gt;最近在读《程序员修炼之道》书很轻巧易懂，但是很多观点的确让人茅塞顿开。&lt;/p&gt;
-&lt;p&gt;写下这个系列，记录自己的读书心得，指导日后学习生活。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Tue, 28 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-28:cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html</guid><category>读书笔记</category><category>程序员修炼之道</category></item><item><title>《程序员修炼之道》</title><link>http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao.html</link><description>&lt;p&gt;床边一直摆着这本书，偶尔翻一翻，遇到让自己觉得很不错的观点就记一下。不得不说，这本书的很多观点非常使用，有时候甚至让人有醍醐灌顶的感觉。本文是读书心得，参照原书，但是多有修改删减，添加自身体会。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;知识资产&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;知识上的投资总能得到最好的汇报。　－本杰明.富兰克林&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;毫无疑问，知识永远是最重要的生产力之一。而对于程序员来讲，知识显得尤其重要。因为这个行业的特殊性，知识更迭异常迅速。虽然有些东西是万变不离其宗的，但是不可否认的是，有些技术的的确确会过时，甚至逼近一无是处。我们能做的，就是不断给自己充电。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;经营知识资产&lt;/strong&gt;
-文中提到了几种经营知识资产的办法。&lt;/p&gt;
-&lt;p&gt;+　&lt;em&gt;定期投资&lt;/em&gt;。学海无涯，多读书，多关注技术领域，永远不要停止学习，给自己充电。这是给现在，更是给未来的自己的一个忠告。
-+　&lt;em&gt;多元化&lt;/em&gt;。广泛涉猎，不要局限于某一个特定的技术领域，培养全方位立体的认知体系，从各个角度思考问题。个人认为，这个多元化应该超出技术范围，人文领域的东西也许能带来更多启发。
-+　&lt;em&gt;管理风险&lt;/em&gt;。学习新知识不代表应该随大流，见别人学什么自己学什么。人的精力是有限的，要认真评估相关知识的潜力，可能带来的收益，投入产出比。当然，这种评估很多时候是形而上的，这就需要多下功夫了解，多向高手讨教。
-+　&lt;em&gt;温故知新&lt;/em&gt;。知识需要温习，要学会温习。随着人阅历，知识储备的增加，看问题的高度和深度不同，曾经学过的东西复习的时候很可能获得新的启发。况且，温习巩固已有的东西本来就是很重要的。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;每年至少学习一门新语言&lt;/em&gt;。新语言不是万能的，但是不会新语言是万万不能的。新语言往往代表着学界工业界对于编程语言能带来的东西的期望，也预示着发展方向。比如近些年具备大规模并行支持的语言盛行。本人是Scala拥趸，对于Clojure、Go、Erlang都有兴趣，当然还有rust。下一门准备看Clojure，看看这个比Scala纯的函数式语言是什么样子。&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;每季度阅读一本技术书籍&lt;/em&gt;。这个要求我觉得不算高，不过我个人更倾向于手边有书随时看，而不拘泥与看哪一本。关键是：看！&lt;/li&gt;
-&lt;li&gt;++&lt;em&gt;阅读非技术书籍&lt;/em&gt;++。强烈推荐，抛开一切，技术只能让你收入更高，效率更高，但是人活着不能只为了工作。“杂书”教会你生活。&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;参与开源项目和社区&lt;/em&gt;。这是我期望将来能做到的，和大家一起交流学习进步，其乐无穷。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Mon, 27 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-27:cheng-xu-yuan-xiu-lian-zhi-dao.html</guid><category>程序员修炼之道，读书笔记</category></item><item><title>琐话</title><link>http://scalaboy.top/suo-hua.html</link><description>&lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;花了两天把这个博客搭好了，是该认真分享点东西了。&lt;/p&gt;
+&lt;p&gt;写下这个系列，记录自己的读书心得，指导日后学习生活。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Tue, 28 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-28:cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html</guid><category>读书笔记</category><category>程序员修炼之道</category></item><item><title>琐话</title><link>http://scalaboy.top/suo-hua.html</link><description>&lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;花了两天把这个博客搭好了，是该认真分享点东西了。&lt;/p&gt;
 &lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Evernote也会随时记笔记，而且效果还不错。但是毕竟是自己看的，遇到一些难度大一点的东西，整理起来就不够细心，效果也就差不少。&lt;/p&gt;
 &lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;中文资料相对较少，尤其是一些国外兴起不久的技术。希望能把自己接触到的东西，自己的理解整理分享出来。&lt;/p&gt;
 &lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;开工！&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Mon, 27 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-27:suo-hua.html</guid><category>博客</category><category>随笔</category></item></channel></rss>
