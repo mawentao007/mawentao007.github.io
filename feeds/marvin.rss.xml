@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Marvin's Blog</title><link>http://scalaboy.top/</link><description></description><atom:link href="http://scalaboy.top/feeds/marvin.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 31 Jul 2015 00:00:00 +0800</lastBuildDate><item><title>Java NIO-3 Channel</title><link>http://scalaboy.top/java-nio-3-channel.html</link><description>&lt;p&gt;Java NIO通道和流在很多方面比较相似，但是还是有一些区别：
-+ 你可以向一个通道中写入或者读出数据，但是流只能单向操作（读或者写）
-+ 通道支持异步读写
-+ 通道总是和Buffer同时出现
-正如上面提到的，你可以从通道中读取数据到缓冲区中，也可以将缓冲区中的数据写入通道。下图是一个简单描述：&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Marvin's Blog</title><link>http://scalaboy.top/</link><description></description><atom:link href="http://scalaboy.top/feeds/marvin.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 31 Jul 2015 00:00:00 +0800</lastBuildDate><item><title>Java NIO-3 Channel</title><link>http://scalaboy.top/java-nio-3-channel.html</link><description>&lt;p&gt;Java NIO通道和流在很多方面比较相似，但是还是有一些区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你可以向一个通道中写入或者读出数据，但是流只能单向操作（读或者写）&lt;/li&gt;
+&lt;li&gt;通道支持异步读写&lt;/li&gt;
+&lt;li&gt;通道总是和Buffer同时出现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;正如上面提到的，你可以从通道中读取数据到缓冲区中，也可以将缓冲区中的数据写入通道。下图是一个简单描述：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="1" src="http://scalaboy.top/blogPicture/overview-channels-buffers.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&amp;ensp;&amp;ensp;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;通道的实现&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Java NIO中有几种最重要的通道实现：
-+ FileChannel
-+ DatagramChannel
-+ SocketChannel
-+ ServerSocketChannel&lt;/p&gt;
+&lt;p&gt;Java NIO中有几种最重要的通道实现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FileChannel&lt;/li&gt;
+&lt;li&gt;DatagramChannel&lt;/li&gt;
+&lt;li&gt;SocketChannel&lt;/li&gt;
+&lt;li&gt;ServerSocketChannel&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;FileChannel&lt;/em&gt; 负责读写文件。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;DatagramChannel&lt;/em&gt; 利用UDP协议读写数据。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;SocketChannel&lt;/em&gt; 利用TCP协议读写数据。&lt;/p&gt;
@@ -96,33 +100,39 @@ val b = Array(2,4,6)
 &lt;p&gt;&lt;strong&gt;Java NIO：非阻塞IO&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Java支持非阻塞模式的IO。例如，一个线程可以请求通道将数据读入缓冲区，而当通道在将数据读入缓冲区的同时，线程可以转头去做其它工作。一旦数据被完全读入缓冲区，线程可以再回来继续处理。将数据写入通道的操作模式也类似。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Java NIO：Selectors&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Wed, 29 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-29:java-nio-1-jiao-cheng.html</guid><category>NIO</category><category>教程</category><category>JAVA</category></item><item><title>Java NIO-2 概述</title><link>http://scalaboy.top/java-nio-2-gai-shu.html</link><description>&lt;p&gt;Java NIO包含如下核心组件：
-+ 通道
-+ 缓冲区
-+ 选择器&lt;/p&gt;
+&lt;p&gt;Java NIO包含“选择器”（selectors）的概念。一个选择器是一个可以监控多个通道事件（连接打开，数据到达等）的对象。通过这种方式，一个线程可以监控多个通道内的数据。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marvin</dc:creator><pubDate>Wed, 29 Jul 2015 00:00:00 +0800</pubDate><guid>tag:scalaboy.top,2015-07-29:java-nio-1-jiao-cheng.html</guid><category>NIO</category><category>教程</category><category>JAVA</category></item><item><title>Java NIO-2 概述</title><link>http://scalaboy.top/java-nio-2-gai-shu.html</link><description>&lt;p&gt;Java NIO包含如下核心组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通道&lt;/li&gt;
+&lt;li&gt;缓冲区&lt;/li&gt;
+&lt;li&gt;选择器&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Java NIO除了这写还有很多类和组件，但是我认为这三者是API的核心。其它组件，例如管道（Pipe）和文件锁（FileLock）等仅仅是辅助联结这三个核心组件进行工作的工具类。因此，我将会在本章重点讲这三个组件。其它组件将会在其它章节涉及。&lt;/p&gt;
-&lt;h4&gt;通道和缓冲区&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;通道和缓冲区&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;所有的IO和NIO都是由通道开始。一个通道就像一个流。数据可以从通道读入缓冲区，也可以由缓冲区写入通道。下图是一个简单描述：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="1" src="http://scalaboy.top/blogPicture/overview-channels-buffers.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&amp;ensp;&amp;ensp;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;通道和缓冲区有很多类型。如下列举了Java NIO实现的一些初级通道类型：
-+ FileChannel
-+ DatagramChannel
-+ SocketChannel
-+ ServerSocketChannel&lt;/p&gt;
+&lt;p&gt;通道和缓冲区有很多类型。如下列举了Java NIO实现的一些初级通道类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FileChannel&lt;/li&gt;
+&lt;li&gt;DatagramChannel&lt;/li&gt;
+&lt;li&gt;SocketChannel&lt;/li&gt;
+&lt;li&gt;ServerSocketChannel&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;不难看出，这些通道的类型覆盖了UDP+TCP网络IO，还有文件IO
-如下是Java NIO中实现的核心缓冲区的列表：
-+ ByteBuffer
-+ CharBuffer
-+ DoubleBuffer
-+ FloatBuffer
-+ IntBuffer
-+ LongBuffer
-+ ShortBuffer&lt;/p&gt;
+如下是Java NIO中实现的核心缓冲区的列表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ByteBuffer&lt;/li&gt;
+&lt;li&gt;CharBuffer&lt;/li&gt;
+&lt;li&gt;DoubleBuffer&lt;/li&gt;
+&lt;li&gt;FloatBuffer&lt;/li&gt;
+&lt;li&gt;IntBuffer&lt;/li&gt;
+&lt;li&gt;LongBuffer&lt;/li&gt;
+&lt;li&gt;ShortBuffer&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;这些缓冲区覆盖了IO中可以利用的数据的基本类型：byte，short，int，long，float，double和characters。
 Java NIO也有MappedByteBuffer，可以结合内存映射文件使用。这部分将会留到介绍缓冲区的章节。&lt;/p&gt;
-&lt;h4&gt;选择器&lt;/h4&gt;
-&lt;p&gt;通过选择器可以实现单个线程处理多个通道事件。如果你的应用存在同时有多个连接打开，而每个连接的通信量不大的情况，那么这将会带来巨大便利。例如，你的应用是聊天程序。
+&lt;p&gt;&lt;strong&gt;选择器&lt;/strong&gt;
+通过选择器可以实现单个线程处理多个通道事件。如果你的应用存在同时有多个连接打开，而每个连接的通信量不大的情况，那么这将会带来巨大便利。例如，你的应用是聊天程序。
 如下是单个线程利用选择器处理处理三个通道的示意图：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="2" src="http://scalaboy.top/blogPicture/overview-selectors.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&amp;ensp;&amp;ensp;Java NIO：单线程利用选择器处理多通道&lt;/strong&gt;&lt;/p&gt;

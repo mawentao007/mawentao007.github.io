@@ -95,19 +95,23 @@
 <footer class="post-info">
         <a href="category/ji-zhu-wen-zhang.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 技术文章</a> 
         <span class="label label-default light">31/ 7月/2015 五</span>
-</footer>      <p>Java NIO通道和流在很多方面比较相似，但是还是有一些区别：
-+ 你可以向一个通道中写入或者读出数据，但是流只能单向操作（读或者写）
-+ 通道支持异步读写
-+ 通道总是和Buffer同时出现
-正如上面提到的，你可以从通道中读取数据到缓冲区中，也可以将缓冲区中的数据写入通道。下图是一个简单描述：</p>
+</footer>      <p>Java NIO通道和流在很多方面比较相似，但是还是有一些区别：</p>
+<ul>
+<li>你可以向一个通道中写入或者读出数据，但是流只能单向操作（读或者写）</li>
+<li>通道支持异步读写</li>
+<li>通道总是和Buffer同时出现</li>
+</ul>
+<p>正如上面提到的，你可以从通道中读取数据到缓冲区中，也可以将缓冲区中的数据写入通道。下图是一个简单描述：</p>
 <p><img alt="1" src="http://scalaboy.top/blogPicture/overview-channels-buffers.png" /></p>
 <p><strong>&ensp;&ensp;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道</strong></p>
 <p><strong>通道的实现</strong></p>
-<p>Java NIO中有几种最重要的通道实现：
-+ FileChannel
-+ DatagramChannel
-+ SocketChannel
-+ ServerSocketChannel</p>
+<p>Java NIO中有几种最重要的通道实现：</p>
+<ul>
+<li>FileChannel</li>
+<li>DatagramChannel</li>
+<li>SocketChannel</li>
+<li>ServerSocketChannel</li>
+</ul>
 <p><em>FileChannel</em> 负责读写文件。</p>
 <p><em>DatagramChannel</em> 利用UDP协议读写数据。</p>
 <p><em>SocketChannel</em> 利用TCP协议读写数据。</p>
