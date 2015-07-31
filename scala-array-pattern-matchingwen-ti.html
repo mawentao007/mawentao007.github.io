@@ -85,144 +85,86 @@
 <!-- /Main Nav -->
 
 <div class="container shadow-container">
-<div class="row">
+<section id="content" class="body">
+  <article>
+    <header>
+      <h3 class="entry-title">Scala Array Pattern Matching问题</h3>
+    </header>
 
-<section id="content" class="left col-md-9">
-    <div class="item">
-        <article class="hentry">
-            <header>
-                <h3>
-                    <a href="http://scalaboy.top/suo-hua.html" rel="bookmark"
-                           title="Permalink to 琐话">
-                           琐话
-                    </a>
-                </h3>
-            </header>
-            <div class="entry-content">
+    <div class="entry-content">
 <footer class="post-info">
-        <a href="category/sui-bi.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 随笔</a> 
-        <span class="label label-default light">27/ 7月/2015 一</span>
-</footer>            <p>&ensp;&ensp;&ensp;&ensp;花了两天把这个博客搭好了，是该认真分享点东西了。</p>
-<p>&ensp;&ensp;&ensp;&ensp;Evernote也会随时记笔记，而且效果还不错。但是毕竟是自己看的，遇到一些难度大一点的东西，整理起来就不够细心，效果也就差不少。</p>
-<p>&ensp;&ensp;&ensp;&ensp;中文资料相对较少，尤其是一些国外兴起不久的技术 ...</p>
-                <a class="btn btn-xs theme_link" href="http://scalaboy.top/suo-hua.html">
-                    <i class="fa fa-sign-out"></i>read more</a>
-<p>There are <a href="http://scalaboy.top/suo-hua.html#disqus_thread">comments</a>.</p>            </div><!-- /.entry-content -->
-        </article>
+        <a href="category/scala.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> Scala</a> 
+        <span class="label label-default light">31/ 7月/2015 五</span>
+</footer>      <p>问题如下：给出两个整数队列，合并并排序。</p>
+<p>这个问题并不难，Scala提供的工具函数可以很简单的解决。首先定义变量：</p>
+<div class="highlight"><pre>val a = Array(1,3,5)
+val b = Array(2,4,6)
+</pre></div>
+
+
+<p>这里声明两个数组a和b，如下是解决办法。</p>
+<h4>第一种方法</h4>
+<div class="highlight"><pre>(a ++ b).sorted
+</pre></div>
+
+
+<p>这个方法通俗易懂，不多加解释了。</p>
+<h4>第二种方法</h4>
+<div class="highlight"><pre>def mergeSort(a: Array[Int], b: Array[Int],ans:ArrayBuffer[Int]): Array[Int] = {
+(a, b) match {
+    case (Array(m, _*), Array(n, _*)) =&gt; if (m &lt; n) {
+        ans += m
+        mergeSort(a.tail, b,ans)
+      } else {
+        ans += n
+        mergeSort(a, b.tail,ans)
+      }
+    case (_, Array()) =&gt; ans ++= a
+    case (Array(),_) =&gt; ans ++= b
+      }
+    ans.toArray
+}
+</pre></div>
+
+
+<p>利用数组进行模式匹配，递归，逐个选出当前最小的元素加入结果队列。</p>
+<h4>第三种方法</h4>
+<div class="highlight"><pre>def listMergeSort(a: List[Int], b: List[Int],ans:ListBuffer[Int]): Array[Int] = {
+  (a, b) match {
+    case (m::x, n::y) =&gt; if (m &lt; n) {
+      ans += m
+      listMergeSort(x,b,ans)
+    } else {
+      ans += n
+      listMergeSort(a, y,ans)
+    }
+    case (Nil,_)=&gt; ans ++= b
+    case (_, Nil) =&gt; ans ++= a
+  }
+  ans.toArray
+}
+</pre></div>
+
+
+<p>这种方法略显笨重，将队列先转换为List，利用List来进行模式匹配获得结果，用最熟悉的方式解决问题。</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'scalaboytop';
+        var disqus_identifier = 'scala-array-pattern-matchingwen-ti.html';
+        var disqus_url = 'http://scalaboy.top/scala-array-pattern-matchingwen-ti.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//scalaboytop.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-<!--   <ul class="pagination">
-    <li id="prev" class="prev disabled"><a class="theme_link" rel="prev">&larr; Previous</a></li>
-    <li id="next" class="next"><a class="theme_link" rel="next">&rarr; Next</a></li>
-  </ul> -->
 
-<div class="paginator">
-	<ul class="pagination">
-    </ul>
-    <ul>
-    <!-- <li>  1 / 1</li>
-   
-      </ul> -->
-</div>
-
+  </article>
 </section>
-<div class="right col-md-3 sidebar">
-      
-<!-- categories -->
-<div class="widget">
-  <h3>Categories</h3>
-  <ul>
-     <li><a class="theme_link" href="http://scalaboy.top/category/du-shu-bi-ji.html"><i class="fa fa-dot-circle-o"></i> 读书笔记</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/java.html"><i class="fa fa-dot-circle-o"></i> JAVA</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/scala.html"><i class="fa fa-dot-circle-o"></i> Scala</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/sui-bi.html"><i class="fa fa-dot-circle-o"></i> 随笔</a>
-    </li>
-    </ul>
-</div>
-
-<!-- Archives -->
-<div class="widget">
-  <h3>Archives</h3>
-  <!-- Get all of the articles with their dates -->
-  <div class="hidden">
-    None
-  </div>
-<!-- If the user indicates they prefer a list.--><ul class="tree">
- <li>
-  <span><i class="fa fa-minus-square-o"></i>2015</span>
-  <ul>
-      <li>
-          <span><i class="fa fa-plus-square-o"></i>07</span>
-          <ul>
-                  <li style="display: none;">
-                      <a class="theme_link" href="http://scalaboy.top/suo-hua.html">
-                      <small>27/ 7月/2015 一</small>琐话</a>
-                  </li>
-          </ul>
-      </li>
-  </ul></li>
-       </ul></div>
-
-<div class="widget">
-  <h3>Tags</h3>
-  <ul>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/array.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Array
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/pattern-matching.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Pattern Matching
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/du-shu-bi-ji.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>读书笔记
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/nio.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>NIO
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/scala.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Scala
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/bo-ke.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>博客
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/sui-bi.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>随笔
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/jiao-cheng.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>教程
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/cheng-xu-yuan-xiu-lian-zhi-dao.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>程序员修炼之道
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/java.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>JAVA
-      </a>
-    </span>
-  </ul>
-</div>
-
-</div>
-</div>
 </div>
     
 

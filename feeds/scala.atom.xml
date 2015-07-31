@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Marvin's Blog</title><link href="http://scalaboy.top/" rel="alternate"></link><link href="http://scalaboy.top/feeds/scala.atom.xml" rel="self"></link><id>http://scalaboy.top/</id><updated>2015-07-31T00:00:00+08:00</updated><entry><title>Scala Array Pattern Matching问题</title><link href="http://scalaboy.top/scala-array-pattern-matchingwen-ti.html" rel="alternate"></link><updated>2015-07-31T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-31:scala-array-pattern-matchingwen-ti.html</id><summary type="html">&lt;p&gt;问题如下：给出两个整数队列，合并并排序。&lt;/p&gt;
+&lt;p&gt;这个问题并不难，Scala提供的工具函数可以很简单的解决。首先定义变量：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;val a = Array(1,3,5)
+val b = Array(2,4,6)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里声明两个数组a和b，如下是解决办法。&lt;/p&gt;
+&lt;h4&gt;第一种方法&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(a ++ b).sorted
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这个方法通俗易懂，不多加解释了。&lt;/p&gt;
+&lt;h4&gt;第二种方法&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;def mergeSort(a: Array[Int], b: Array[Int],ans:ArrayBuffer[Int]): Array[Int] = {
+(a, b) match {
+    case (Array(m, _*), Array(n, _*)) =&amp;gt; if (m &amp;lt; n) {
+        ans += m
+        mergeSort(a.tail, b,ans)
+      } else {
+        ans += n
+        mergeSort(a, b.tail,ans)
+      }
+    case (_, Array()) =&amp;gt; ans ++= a
+    case (Array(),_) =&amp;gt; ans ++= b
+      }
+    ans.toArray
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;利用数组进行模式匹配，递归，逐个选出当前最小的元素加入结果队列。&lt;/p&gt;
+&lt;h4&gt;第三种方法&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;def listMergeSort(a: List[Int], b: List[Int],ans:ListBuffer[Int]): Array[Int] = {
+  (a, b) match {
+    case (m::x, n::y) =&amp;gt; if (m &amp;lt; n) {
+      ans += m
+      listMergeSort(x,b,ans)
+    } else {
+      ans += n
+      listMergeSort(a, y,ans)
+    }
+    case (Nil,_)=&amp;gt; ans ++= b
+    case (_, Nil) =&amp;gt; ans ++= a
+  }
+  ans.toArray
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这种方法略显笨重，将队列先转换为List，利用List来进行模式匹配获得结果，用最熟悉的方式解决问题。&lt;/p&gt;</summary><category term="Scala"></category><category term="Array"></category><category term="Pattern Matching"></category></entry></feed>
