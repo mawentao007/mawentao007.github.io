@@ -88,72 +88,65 @@
 <section id="content" class="body">
   <article>
     <header>
-      <h3 class="entry-title">Scala Array Pattern Matching问题</h3>
+      <h3 class="entry-title">Java NIO-3 Channel</h3>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
         <a href="category/ji-zhu-wen-zhang.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 技术文章</a> 
-        <span class="label label-default light">31/ 7月/2015 五</span>
-</footer>      <p>问题如下：给出两个整数队列，合并并排序。</p>
-<p>这个问题并不难，Scala提供的工具函数可以很简单的解决。首先定义变量：</p>
-<div class="highlight"><pre>val a = Array(1,3,5)
-val b = Array(2,4,6)
-</pre></div>
+        <span class="label label-default light">29/ 7月/2015 三</span>
+</footer>      <p>Java NIO通道和流在很多方面比较相似，但是还是有一些区别：</p>
+<ul>
+<li>你可以向一个通道中写入或者读出数据，但是流只能单向操作（读或者写）</li>
+<li>通道支持异步读写</li>
+<li>通道总是和Buffer同时出现</li>
+</ul>
+<p>正如上面提到的，你可以从通道中读取数据到缓冲区中，也可以将缓冲区中的数据写入通道。下图是一个简单描述：</p>
+<p><img alt="1" src="http://scalaboy.top/blogPicture/overview-channels-buffers.png" /></p>
+<p><strong>&ensp;&ensp;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道</strong></p>
+<p><strong>通道的实现</strong></p>
+<p>Java NIO中有几种最重要的通道实现：</p>
+<ul>
+<li>FileChannel</li>
+<li>DatagramChannel</li>
+<li>SocketChannel</li>
+<li>ServerSocketChannel</li>
+</ul>
+<p><em>FileChannel</em> 负责读写文件。</p>
+<p><em>DatagramChannel</em> 利用UDP协议读写数据。</p>
+<p><em>SocketChannel</em> 利用TCP协议读写数据。</p>
+<p><em>ServerSocketChannel</em> 允许你监听TCP连接，正如web服务器所做的那样。对于每个进入的连接会相应创建一个SocketChannel。</p>
+<p><strong>简单的例子</strong></p>
+<div class="highlight"><pre>    RandomAccessFile aFile = new RandomAccessFile(&quot;data/nio-data.txt&quot;, &quot;rw&quot;);
+    FileChannel inChannel = aFile.getChannel();
 
+    ByteBuffer buf = ByteBuffer.allocate(48);
 
-<p>这里声明两个数组a和b，如下是解决办法。</p>
-<h4>第一种方法</h4>
-<div class="highlight"><pre>(a ++ b).sorted
-</pre></div>
+    int bytesRead = inChannel.read(buf);
+    while (bytesRead != -1) {
 
+      System.out.println(&quot;Read &quot; + bytesRead);
+      buf.flip();
 
-<p>这个方法通俗易懂，不多加解释了。</p>
-<h4>第二种方法</h4>
-<div class="highlight"><pre>def mergeSort(a: Array[Int], b: Array[Int],ans:ArrayBuffer[Int]): Array[Int] = {
-(a, b) match {
-    case (Array(m, _*), Array(n, _*)) =&gt; if (m &lt; n) {
-        ans += m
-        mergeSort(a.tail, b,ans)
-      } else {
-        ans += n
-        mergeSort(a, b.tail,ans)
+      while(buf.hasRemaining()){
+          System.out.print((char) buf.get());
       }
-    case (_, Array()) =&gt; ans ++= a
-    case (Array(),_) =&gt; ans ++= b
-      }
-    ans.toArray
-}
-</pre></div>
 
-
-<p>利用数组进行模式匹配，递归，逐个选出当前最小的元素加入结果队列。</p>
-<h4>第三种方法</h4>
-<div class="highlight"><pre>def listMergeSort(a: List[Int], b: List[Int],ans:ListBuffer[Int]): Array[Int] = {
-  (a, b) match {
-    case (m::x, n::y) =&gt; if (m &lt; n) {
-      ans += m
-      listMergeSort(x,b,ans)
-    } else {
-      ans += n
-      listMergeSort(a, y,ans)
+      buf.clear();
+      bytesRead = inChannel.read(buf);
     }
-    case (Nil,_)=&gt; ans ++= b
-    case (_, Nil) =&gt; ans ++= a
-  }
-  ans.toArray
-}
+    aFile.close();
 </pre></div>
 
 
-<p>这种方法略显笨重，将队列先转换为List，利用List来进行模式匹配获得结果，用最熟悉的方式解决问题。</p>
+<p>注意其中的buf.flip()调用。首先将数据读入Buffer，之后flip，然后将数据读出。</p>
     </div><!-- /.entry-content -->
     <div class="comments">
       <div id="disqus_thread"></div>
       <script type="text/javascript">
         var disqus_shortname = 'scalaboytop';
-        var disqus_identifier = 'scala-array-pattern-matchingwen-ti.html';
-        var disqus_url = 'http://scalaboy.top/scala-array-pattern-matchingwen-ti.html';
+        var disqus_identifier = 'java-nio-3-channel.html';
+        var disqus_url = 'http://scalaboy.top/java-nio-3-channel.html';
         (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//scalaboytop.disqus.com/embed.js';
