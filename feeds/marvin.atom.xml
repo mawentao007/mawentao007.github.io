@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Marvin's Blog</title><link href="http://scalaboy.top/" rel="alternate"></link><link href="http://scalaboy.top/feeds/marvin.atom.xml" rel="self"></link><id>http://scalaboy.top/</id><updated>2015-07-31T00:00:00+08:00</updated><entry><title>Scala Array Pattern Matching问题</title><link href="http://scalaboy.top/scala-array-pattern-matchingwen-ti.html" rel="alternate"></link><updated>2015-07-31T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-31:scala-array-pattern-matchingwen-ti.html</id><summary type="html">&lt;p&gt;问题如下：给出两个整数队列，合并并排序。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Marvin's Blog</title><link href="http://scalaboy.top/" rel="alternate"></link><link href="http://scalaboy.top/feeds/marvin.atom.xml" rel="self"></link><id>http://scalaboy.top/</id><updated>2015-07-31T00:00:00+08:00</updated><entry><title>Java NIO-3 Channel</title><link href="http://scalaboy.top/java-nio-3-channel.html" rel="alternate"></link><updated>2015-07-31T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-31:java-nio-3-channel.html</id><summary type="html">&lt;p&gt;Java NIO通道和流在很多方面比较相似，但是还是有一些区别：
++ 你可以向一个通道中写入或者读出数据，但是流只能单向操作（读或者写）
++ 通道支持异步读写
++ 通道总是和Buffer同时出现
+正如上面提到的，你可以从通道中读取数据到缓冲区中，也可以将缓冲区中的数据写入通道。下图是一个简单描述：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1" src="http://scalaboy.top/blogPicture/overview-channels-buffers.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;ensp;&amp;ensp;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;通道的实现&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Java NIO中有几种最重要的通道实现：
++ FileChannel
++ DatagramChannel
++ SocketChannel
++ ServerSocketChannel&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;FileChannel&lt;/em&gt; 负责读写文件。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;DatagramChannel&lt;/em&gt; 利用UDP协议读写数据。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;SocketChannel&lt;/em&gt; 利用TCP协议读写数据。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;ServerSocketChannel&lt;/em&gt; 允许你监听TCP连接，正如web服务器所做的那样。对于每个进入的连接会相应创建一个SocketChannel。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;简单的例子&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    RandomAccessFile aFile = new RandomAccessFile(&amp;quot;data/nio-data.txt&amp;quot;, &amp;quot;rw&amp;quot;);
+    FileChannel inChannel = aFile.getChannel();
+
+    ByteBuffer buf = ByteBuffer.allocate(48);
+
+    int bytesRead = inChannel.read(buf);
+    while (bytesRead != -1) {
+
+      System.out.println(&amp;quot;Read &amp;quot; + bytesRead);
+      buf.flip();
+
+      while(buf.hasRemaining()){
+          System.out.print((char) buf.get());
+      }
+
+      buf.clear();
+      bytesRead = inChannel.read(buf);
+    }
+    aFile.close();
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意其中的buf.flip()调用。首先将数据读入Buffer，之后flip，然后将数据读出。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry><entry><title>Scala Array Pattern Matching问题</title><link href="http://scalaboy.top/scala-array-pattern-matchingwen-ti.html" rel="alternate"></link><updated>2015-07-31T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-31:scala-array-pattern-matchingwen-ti.html</id><summary type="html">&lt;p&gt;问题如下：给出两个整数队列，合并并排序。&lt;/p&gt;
 &lt;p&gt;这个问题并不难，Scala提供的工具函数可以很简单的解决。首先定义变量：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;val a = Array(1,3,5)
 val b = Array(2,4,6)
@@ -86,51 +126,7 @@ Java NIO也有MappedByteBuffer，可以结合内存映射文件使用。这部�
 如下是单个线程利用选择器处理处理三个通道的示意图：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="2" src="http://scalaboy.top/blogPicture/overview-selectors.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&amp;ensp;&amp;ensp;Java NIO：单线程利用选择器处理多通道&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;首先要注册通道到选择器，之后通过调用select()开始工作。这个方法将会阻塞线程直到某个已经注册的通道完成工作并触发事件。一旦方法返回，线程就可以着手处理这些事件。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry><entry><title>Java NIO-3 Channel</title><link href="http://scalaboy.top/java-nio-3-channel.html" rel="alternate"></link><updated>2015-07-29T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-29:java-nio-3-channel.html</id><summary type="html">&lt;p&gt;Java NIO通道和流在很多方面比较相似，但是还是有一些区别：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;你可以向一个通道中写入或者读出数据，但是流只能单向操作（读或者写）&lt;/li&gt;
-&lt;li&gt;通道支持异步读写&lt;/li&gt;
-&lt;li&gt;通道总是和Buffer同时出现&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;正如上面提到的，你可以从通道中读取数据到缓冲区中，也可以将缓冲区中的数据写入通道。下图是一个简单描述：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="1" src="http://scalaboy.top/blogPicture/overview-channels-buffers.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&amp;ensp;&amp;ensp;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;通道的实现&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Java NIO中有几种最重要的通道实现：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;FileChannel&lt;/li&gt;
-&lt;li&gt;DatagramChannel&lt;/li&gt;
-&lt;li&gt;SocketChannel&lt;/li&gt;
-&lt;li&gt;ServerSocketChannel&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;FileChannel&lt;/em&gt; 负责读写文件。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;DatagramChannel&lt;/em&gt; 利用UDP协议读写数据。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;SocketChannel&lt;/em&gt; 利用TCP协议读写数据。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;ServerSocketChannel&lt;/em&gt; 允许你监听TCP连接，正如web服务器所做的那样。对于每个进入的连接会相应创建一个SocketChannel。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;简单的例子&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    RandomAccessFile aFile = new RandomAccessFile(&amp;quot;data/nio-data.txt&amp;quot;, &amp;quot;rw&amp;quot;);
-    FileChannel inChannel = aFile.getChannel();
-
-    ByteBuffer buf = ByteBuffer.allocate(48);
-
-    int bytesRead = inChannel.read(buf);
-    while (bytesRead != -1) {
-
-      System.out.println(&amp;quot;Read &amp;quot; + bytesRead);
-      buf.flip();
-
-      while(buf.hasRemaining()){
-          System.out.print((char) buf.get());
-      }
-
-      buf.clear();
-      bytesRead = inChannel.read(buf);
-    }
-    aFile.close();
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;注意其中的buf.flip()调用。首先将数据读入Buffer，之后flip，然后将数据读出。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry><entry><title>Java NIO 前言</title><link href="http://scalaboy.top/java-nio-qian-yan.html" rel="alternate"></link><updated>2015-07-29T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-29:java-nio-qian-yan.html</id><summary type="html">&lt;p&gt;在网上看到一篇很不错的Java NIO的教程，相信google过的同学都看到过，地址：http://tutorials.jenkov.com/java-nio/index.html。&lt;/p&gt;
+&lt;p&gt;首先要注册通道到选择器，之后通过调用select()开始工作。这个方法将会阻塞线程直到某个已经注册的通道完成工作并触发事件。一旦方法返回，线程就可以着手处理这些事件。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry><entry><title>Java NIO 前言</title><link href="http://scalaboy.top/java-nio-qian-yan.html" rel="alternate"></link><updated>2015-07-29T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-29:java-nio-qian-yan.html</id><summary type="html">&lt;p&gt;在网上看到一篇很不错的Java NIO的教程，相信google过的同学都看到过，地址：http://tutorials.jenkov.com/java-nio/index.html。&lt;/p&gt;
 &lt;p&gt;我想翻译过来，方便日后学习同时可以自己增加一些理解。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry><entry><title>程序员修炼之道-前言</title><link href="http://scalaboy.top/cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html" rel="alternate"></link><updated>2015-07-28T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-28:cheng-xu-yuan-xiu-lian-zhi-dao-qian-yan.html</id><summary type="html">&lt;p&gt;最近在读《程序员修炼之道》书很轻巧易懂，但是很多观点的确让人茅塞顿开。&lt;/p&gt;
 &lt;p&gt;写下这个系列，记录自己的读书心得，指导日后学习生活。&lt;/p&gt;</summary><category term="读书笔记"></category><category term="程序员修炼之道"></category></entry><entry><title>琐话</title><link href="http://scalaboy.top/suo-hua.html" rel="alternate"></link><updated>2015-07-27T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-27:suo-hua.html</id><summary type="html">&lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;花了两天把这个博客搭好了，是该认真分享点东西了。&lt;/p&gt;
 &lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Evernote也会随时记笔记，而且效果还不错。但是毕竟是自己看的，遇到一些难度大一点的东西，整理起来就不够细心，效果也就差不少。&lt;/p&gt;
