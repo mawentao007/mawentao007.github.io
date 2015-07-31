@@ -130,4 +130,5 @@ Java NIO也有MappedByteBuffer，可以结合内存映射文件使用。这部�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;注意其中的buf.flip()调用。首先将数据读入Buffer，之后flip，然后将数据读出。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry></feed>
+&lt;p&gt;注意其中的buf.flip()调用。首先将数据读入Buffer，之后flip，然后将数据读出。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry><entry><title>Java NIO 前言</title><link href="http://scalaboy.top/java-nio-qian-yan.html" rel="alternate"></link><updated>2015-07-29T00:00:00+08:00</updated><author><name>Marvin</name></author><id>tag:scalaboy.top,2015-07-29:java-nio-qian-yan.html</id><summary type="html">&lt;p&gt;在网上看到一篇很不错的Java NIO的教程，相信google过的同学都看到过，地址：http://tutorials.jenkov.com/java-nio/index.html。&lt;/p&gt;
+&lt;p&gt;我想翻译过来，方便日后学习同时可以自己增加一些理解。&lt;/p&gt;</summary><category term="NIO"></category><category term="教程"></category><category term="JAVA"></category></entry></feed>
