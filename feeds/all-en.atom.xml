@@ -30,8 +30,10 @@
 &lt;p&gt;正如上面提到的，你可以从通道中读取数据到缓冲区中，也可以将缓冲区中的数据写入通道。下图是一个简单描述：
 &lt;p align="center"&gt;
 &lt;img class="embeded-img" src="http://scalaboy.top/images/overview-channels-buffers.png"&gt;
+&lt;/p&gt;
+&lt;p align="center"&gt;
+&lt;strong&gt;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道&lt;/strong&gt;
 &lt;/p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&amp;ensp;&amp;ensp;Java NIO：通道读数据到缓冲区，缓冲区写数据到通道&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;通道的实现&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Java NIO中有几种最重要的通道实现：&lt;/p&gt;
 &lt;ul&gt;
