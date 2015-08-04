@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Marvin's Blog - </title>
+    <meta name="description" content="" />
+    <meta name="Author" content="Marvin" />
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/plugins/lt-ie9/html5.js"></script>
+    <script type="text/javascript" src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/plugins/lt-ie9/respond.min.js"></script>
+    <script type="text/javascript" src="http://stepofweb.gweb.io/.templates/IsisOne/HTML/assets/plugins/lt-ie9/excanvas.compiled.js"></script>
+    <![endif]-->
+
+    <!-- GOOGLE FONTS -->
+   <!--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Dosis:300,400" rel="stylesheet" type="text/css" /> -->
+
+
+    <!-- CORE CSS FRAMEWORK -->
+    <link href="http://scalaboy.top/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://scalaboy.top/theme/css/font-awesome.css" rel="stylesheet">
+
+    <!-- CSS TEMPLATE -->
+    <link href="http://scalaboy.top/theme/css/framework.css" rel="stylesheet" type="text/css" />
+    <link href="http://scalaboy.top/theme/css/typography.css" rel="stylesheet" type="text/css" />
+    <link href="http://scalaboy.top/theme/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="http://scalaboy.top/theme/css/tag.css" rel="stylesheet" type="text/css" />
+
+    <!--link href="http://scalaboy.top/theme/css/blog.css" rel="stylesheet" type="text/css" /-->
+
+    <!-- ICONS -->
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- Morenizr -->
+    <script type="text/javascript" src="http://scalaboy.top/theme/js/modernizr.min.js"></script>
+
+    <!-- google authorship -->
+</head>
+<body id="index" class="home">
+<!-- Main Nav -->
+<header id="header" style="margin-top:0">
+
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+    <a href="https://github.com/mawentao007"><img style="position: fixed; top: 10; right: 0; border: 5;" alt="Fork me on GitHub" src="/theme/images/github.png"></a>
+
+      <!-- Mobile Menu Button -->
+      <!--button id="mobileMenu" class="fa fa-bars" type="button" data-toggle="collapse" data-target=".navbar-collapse"></button-->
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="http://scalaboy.top/index.html">
+          <!--img src="" alt="" width="50" height="50" /-->
+          <span class="hidden-xs">Marvin&#39;s Blog</span>
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+   
+
+        <ul class="nav navbar-nav navbar-right">
+          <!-- If the user wants to make articles the home page then remove blog link, and make about and work links point to old home page. -->
+       
+          <li><a href="http://scalaboy.top/index.html">Home</a></li>
+          <li><a href="http://scalaboy.top/about.html">About</a></li>
+          <li><a href="http://scalaboy.top/archives.html">Archives</a></li-->
+                 <!-- Fullscreen Button - Unavailable for IE -->
+          <li><a href="#" class="btn-fullscreen"><i class="fa fa-external-link" ></i></a><li>
+      
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+
+    </div>
+  </nav>
+</header>
+<!-- /Main Nav -->
+
+<div class="container shadow-container">
+<section id="content" class="body">
+  <article>
+    <header>
+      <h3 class="entry-title">Java NIO-4 Buffer</h3>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <a href="category/ji-zhu-wen-zhang.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 技术文章</a> 
+        <span class="label label-default light">01/ 8月/2015 六</span>
+</footer>      <p>Java NIO缓冲区是和NIO通道进行交互，共同工作的。</p>
+<p>一个缓冲区实际上是是一块内存区域，可以用来读写数据。这块内存区域被一个NIO缓冲区对象封装起来，这个对象提供了一系列方法来方便对该内存块进行操作</p>
+<p><strong>基本的缓冲区用法</strong></p>
+<p>使用一个缓冲区进行读写通常需要四个步骤：</p>
+<ol>
+<li>将数据写入缓冲区</li>
+<li>调用<em>buffer.flip()</em></li>
+<li>从缓冲区读出数据</li>
+<li>调用<em>buffer.clear()</em>或者<em>buffer.compact()</em></li>
+</ol>
+<p>当用户向缓冲区写入数据的时候，缓冲区会记录写入数据量。一旦需要读取数据，则需要调用<em>flip()</em>函数将缓冲区由写模式切换到读模式。</p>
+<p>一旦所有的数据都被读出，用户需要清除缓冲区来为下一次写入做准备。清除缓冲区可以通过<em>clear()</em>或者<em>compact()</em>两个方法实现。<em>clear()</em>方法清除整个缓冲区，而<em>compact()</em>方法只清除刚刚读取过的数据。任何未读取数据都将被移动到缓冲区起始位置，新写入的数据将会被追加到未读取数据之后。</p>
+<p>下面是一段使用缓冲区的示例代码：</p>
+<div class="highlight"><pre>RandomAccessFile aFile = new RandomAccessFile(&quot;data/nio-data.txt&quot;, &quot;rw&quot;);
+FileChannel inChannel = aFile.getChannel();
+
+//create buffer with capacity of 48 bytes
+ByteBuffer buf = ByteBuffer.allocate(48);
+
+int bytesRead = inChannel.read(buf); //read into buffer.
+while (bytesRead != -1) {
+
+  buf.flip();  //make buffer ready for read
+
+  while(buf.hasRemaining()){
+      System.out.print((char) buf.get()); // read 1 byte at a time
+  }
+
+  buf.clear(); //make buffer ready for writing
+  bytesRead = inChannel.read(buf);
+}
+aFile.close();
+</pre></div>
+
+
+<p><strong>缓冲区容积(Capacity)，位置(Position)和界限(Limit)</strong></p>
+<p>一个缓冲区对象有三个用户必须熟悉的熟悉，只有熟悉这些属性才能更好的理解缓冲区的工作原理：</p>
+<ul>
+<li>capacity</li>
+<li>position</li>
+<li>limit</li>
+</ul>
+<p>其中<em>position</em>和<em>limit</em>的含义取决于当前缓冲区处于何种模式。<em>Capacity</em>的含义是在不同模式下是一致的。</p>
+<p>下面有一个例子来讲解这三个属性在不同模式下的意义：
+<p align="center">
+    <img class=embeded-img src="./images/buffers-modes.png">
+</p>
+<p align="center">
+<strong>capacity,position和limit在读写模式下的含义</strong>
+</p></p>
+<p><strong>Capacity</strong></p>
+<p>这个属性表示相应的缓冲区的大小，用户能操作的当前缓冲区的空间不超过这个属性值。一旦缓冲区被填满，则必须先清空缓冲区（读出数据或者调用<em>clear</em>）才能继续写入。</p>
+<p><strong>Position</strong></p>
+<p>用户向缓冲区写入数据需要从<em>position</em>开始，初始状态这个值是0。当有数据写入缓冲区，<em>position</em>移动到下一个可写入的内存单元。<em>Position</em>最大只能到<em>capacity - 1</em>。</p>
+<p>当用户从缓冲区读取数据时，也要从<em>position</em>开始。当用户将缓冲区由写模式切换到读取模式，<em>position</em>被设置为0。随着读取的进行，<em>position</em>向下一个可读取的位置移动。</p>
+<p><strong>Limit</strong></p>
+<p>在写模式下这个熟悉就代表整个缓冲区的大小，和<em>capacity</em>的值相等。</p>
+<p>当缓冲区切换到读取模式，<em>limit</em>表示总共可读出的数据的大小。因此，当调用<em>flip()</em>由写模式切换到读取模式的时候，<em>limit</em>被设置为写模式<em>position</em>所在的位置。换句话说，用户可以读取的数据就是被写入的数据的大小。</p>
+<p><strong>缓冲区类型</strong></p>
+<ul>
+<li>ByteBuffer</li>
+<li>MappedByteBuffer</li>
+<li>CharBuffer</li>
+<li>DoubleBuffer</li>
+<li>FloatBuffer</li>
+<li>IntBuffer</li>
+<li>LongBuffer</li>
+<li>ShortBuffer</li>
+</ul>
+<p><em>MappedByteBuffer</em>比较特殊，请参照相关文档。</p>
+<p><strong>分配缓冲区</strong></p>
+<p>每个缓冲区类型都有一个<em>allocate()</em>方法用来分配空间。如下：</p>
+<div class="highlight"><pre>ByteBuffer buf = ByteBuffer.allocate(48);
+</pre></div>
+
+
+<p>下面是一个例子，分配一个大小为1024个字符的<em>CharBuffer</em></p>
+<div class="highlight"><pre>CharBuffer buf = CharBuffer.allocate(1024);
+</pre></div>
+
+
+<p><strong>写入缓冲区</strong></p>
+<p>有两种方法可以向缓冲区写入数据:</p>
+<ul>
+<li>从通道中将数据写入缓冲区</li>
+<li>利用<em>put()</em>方法直接向缓冲区写入数据</li>
+</ul>
+<p>如下展示的是由通道向缓冲区写数据:</p>
+<div class="highlight"><pre>int bytesRead = inChannel.read(buf); //read into buffer.
+</pre></div>
+
+
+<p>如下是用<em>put()</em>方法写缓冲区：</p>
+<div class="highlight"><pre>buf.put(127);
+</pre></div>
+
+
+<blockquote>
+<p><em>put()</em>有很多版本，每个版本功能不尽相同，请参照JavaDoc选择使用。</p>
+</blockquote>
+<p><strong>rewind()</strong></p>
+<p><em>Buffer.rewind()</em>方法设置<em>position</em>为0，不改变<em>limit</em>的值。</p>
+<p><strong>clear()和compact()</strong></p>
+<p>一旦完成从缓冲区读取数据，在进行写入之前，必须调用<em>clear()</em>或者<em>compact()</em>来清理缓冲区。</p>
+<p><em>clear()</em>将<em>position</em>设置为0，将<em>limit</em>设置为<em>capacity</em>的值。换句话说，整个缓冲区被清空。但是事实上缓冲区的数据并没有没清理掉，只是改变了相应的标志，将缓冲区存在数据的部分也视为可写。在写入的时候会进行覆盖。</p>
+<p>如果缓冲区中有未被读取过的数据，而用户需要在将来某一个时刻继续读取，但是在之前要进行写入操作，那么就要使用<em>compact()</em>。</p>
+<p><em>compact()</em>将所有未读数据写入缓冲区的开始部分，之后将position设置为紧跟最后一个未读数据的内存单元。<em>limit</em>属性依旧是<em>capacity</em>值。这时可以继续进行写入，而且未读取的值不会被覆盖。</p>
+<p><strong>mark()和reset()</strong></p>
+<p>用户可以通过调用<em>Buffer.mark()</em>标记一个位置，之后可以通过调用<em>Buffer.reset()</em>将<em>position</em>设置为标记的位置。下面是一个例子：</p>
+<div class="highlight"><pre>buffer.mark();
+//call buffer.get() a couple of times, e.g. during parsing.
+buffer.reset();  //set position back to mark.
+</pre></div>
+
+
+<p><strong>equals()和compareTo()</strong>
+可以通过<em>equals()</em>和<em>compareTo()</em>来比较两个缓冲区。</p>
+<p>满足如下条件则两个缓冲区是<em>equals</em>:</p>
+<ul>
+<li>相同类型</li>
+<li>有同样数量的剩余数据量</li>
+<li>所有剩余的数据是相等的</li>
+</ul>
+<p>这个方法只比较一部分缓冲区，而不是缓冲区的每个内存元素。事实上它只比较缓冲区剩余的内存元素。</p>
+<p><em>compareTo()</em>方法比较两个缓冲区剩余的元素，在某些场景使用，例如排序。满足如下条件则视为一个缓冲区小于另一个：</p>
+<ul>
+<li>缓冲区中之前的元素和另一个缓冲区对应位置的元素一样，而当前元素比另一个缓冲区的小。</li>
+<li>两个缓冲区对应位置所有元素一样，但是第一个缓冲区元素较少。</li>
+</ul>
+<p>通过上述比较可以发现，这个方法和字符串的比较很相似。</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'scalaboytop';
+        var disqus_identifier = 'java-nio-4-buffer.html';
+        var disqus_url = 'http://scalaboy.top/java-nio-4-buffer.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//scalaboytop.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+</div>
+    
+
+      
+<!-- FOOTER -->
+<footer class="bottom">
+
+  <!-- SCROOL TO TOP -->
+  <a href="#toTop" class="fa fa-arrow-up toTop"></a>
+
+  <div class="container">
+
+    <div class="row">
+        <div class="col-md-4 text-left">
+              Thanks To <a class="theme_link" href="http://docs.getpelican.com/" target="_blank">Pelican</a> For Generator
+        </div>
+
+        <div class="col-md-4 text-center copyright">
+            Marvin&#39;s Blog
+            <br />2015 &copy; All Rights Reserved.
+        </div>
+
+        <div class="col-md-4 text-right">
+              <a href="http://weibo.com/p/1005051799756001" class="social fa fa-weibo" target="_blank"></a>
+              <a href="https://github.com/mawentao007" class="social fa fa-github" target="_blank"></a>
+        </div>
+
+    </div>
+
+  </div>
+</footer>
+<!-- /FOOTER -->
+
+
+
+<!-- CORE FILES -->
+
+
+<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.isotope.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/masonry.js"></script>
+
+<!-- PLUGINS -->
+<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.fitvids.min.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.appear.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.superslides.min.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.countTo.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/holder.js"></script>
+<!-- delete on production -->
+
+<!-- js scripts -->
+<script async type="text/javascript" src="http://scalaboy.top/theme/js/scripts.js"></script>
+
+<script type="text/javascript" src="http://scalaboy.top/theme/js/ImageAutoResize.js"></script>
+<script type="text/javascript" src="http://scalaboy.top/theme/js/application.js"></script>
+
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-65702811-1']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+    setTimeout(function() {
+      window.onscroll = function() {
+        window.onscroll = null; // Only track the event once
+        _gaq.push(['_trackEvent', 'scroll', 'read']);
+      }
+    }, 5000);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'scalaboytop'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+  var s = document.createElement('script'); s.async = true;
+  s.type = 'text/javascript';
+  s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script>
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-65702811-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'scalaboytop';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>
