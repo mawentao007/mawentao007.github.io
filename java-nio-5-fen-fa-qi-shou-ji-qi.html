@@ -84,143 +84,80 @@
 </header>
 <!-- /Main Nav -->
 
-<div class="container shadow-container-index">
-<div class="row">
+<div class="container shadow-container">
+<section id="content" class="body">
+  <article>
+    <header>
+      <h3 class="entry-title">Java NIO-5 分发器/收集器</h3>
+    </header>
 
-<section id="content" class="left col-md-9">
-    <div class="item">
-        <article class="hentry">
-            <header>
-                <h3>
-                    <a href="http://scalaboy.top/suo-hua.html" rel="bookmark"
-                           title="Permalink to 琐话">
-                           琐话
-                    </a>
-                </h3>
-            </header>
-            <div class="entry-content">
+    <div class="entry-content">
 <footer class="post-info">
-        <a href="category/sui-bi.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 随笔</a> 
-        <span class="label label-default light">27/ 7月/2015 一</span>
-</footer>            <p>&ensp;&ensp;&ensp;&ensp;花了两天把这个博客搭好了，是该认真分享点东西了。</p>
-<p>&ensp;&ensp;&ensp;&ensp;Evernote也会随时记笔记，而且效果还不错。但是毕竟是自己看的，遇到一些难度大一点的东西，整理起来就不够细心，效果也就差不少。</p>
-<p>&ensp;&ensp;&ensp;&ensp;中文资料相对较少，尤其是一些国外兴起不久的技术 ...</p>
-                <a class="btn btn-xs theme_link" href="http://scalaboy.top/suo-hua.html">
-                    <i class="fa fa-sign-out"></i>read more</a>
-<p>There are <a href="http://scalaboy.top/suo-hua.html#disqus_thread">comments</a>.</p>            </div><!-- /.entry-content -->
-        </article>
+        <a href="category/ji-zhu-wen-zhang.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 技术文章</a> 
+        <span class="label label-default light">03/ 8月/2015 一</span>
+</footer>      <p>Java NIO内置支持分发器(scatter)/收集器(gather)。分发器/收集器在读写通道的时候使用。</p>
+<p>分发器的读取操作是指从一个通道读取数据到一个或者多个缓冲区。这个操作可以被认为是通道将数据“分发”到多个缓冲区。</p>
+<p>收集器的写操作是指将数据从一个或者多个缓冲区写入单个通道。这个操作可以视作从多个缓冲区“收集”数据到一个通道。</p>
+<p>在用户需要利用多个分别传输数据的组件进行工作的时候，分发/收集操作就变得格外有意义。例如，如果一个消息包含头部和内容，用户可能需要将这两部分保存在不同的缓冲区中。有了收集分发机制可以使用户更好的处理这种分别存储的状况。</p>
+<h4>分发读</h4>
+<p>一个"分发读"操作将数据从一个通道读入多个缓冲区。如下图：
+<p align="center">
+    <img class=embeded-img src="./images/scatter.png">
+</p>
+<p align="center">
+<strong>JAVA NIO:分发读操作</strong>
+</p></p>
+<p>如下是一个分发读操作的示例代码：</p>
+<div class="highlight"><pre>ByteBuffer header = ByteBuffer.allocate(128);
+ByteBuffer body   = ByteBuffer.allocate(1024);
+
+ByteBuffer[] bufferArray = { header, body };
+
+channel.read(buffers);
+</pre></div>
+
+
+<p>注意首先将缓冲区放入一个队列，之后再将这个队列作为参数传递给<em>channel.read()</em>方法。这个方法将会从通道中读取数据，并依次放入队列包含的缓冲区中。一旦一个缓冲区被填满，通道将数据写入下一个缓冲区。</p>
+<p>由于数据是一个个填满缓冲区的，因此这种方法不适用于动态消息大小。换句话说，如果用户的消息包含头部和内容，那么头部的大小必须固定下来，分发器才能正常工作。</p>
+<h4>收集写</h4>
+<p>"收集写"是将数据从多个缓冲区读出并写入一个通道。如图：
+<p align="center">
+    <img class=embeded-img src="./images/gather.png">
+</p>
+<p align="center">
+<strong>JAVA NIO:收集写</strong>
+</p>
+如下是示例代码：</p>
+<div class="highlight"><pre>ByteBuffer header = ByteBuffer.allocate(128);
+ByteBuffer body   = ByteBuffer.allocate(1024);
+
+//write data into buffers
+
+ByteBuffer[] bufferArray = { header, body };
+
+channel.write(buffers);
+</pre></div>
+
+
+<p>缓冲区队列作为参数传递给<em>write()</em>方法，这个方法按顺序将缓冲区的数据写入通道。只有position和limit之间的数据会被写入。因此，收集写可以应对动态消息大小的情况，这点与分发读不同。</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'scalaboytop';
+        var disqus_identifier = 'java-nio-5-fen-fa-qi-shou-ji-qi.html';
+        var disqus_url = 'http://scalaboy.top/java-nio-5-fen-fa-qi-shou-ji-qi.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//scalaboytop.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-<!--   <ul class="pagination">
-    <li id="prev" class="prev disabled"><a class="theme_link" rel="prev">&larr; Previous</a></li>
-    <li id="next" class="next"><a class="theme_link" rel="next">&rarr; Next</a></li>
-  </ul> -->
 
-<div class="paginator">
-	<ul class="pagination">
-    </ul>
-    <ul>
-    <!-- <li>  1 / 1</li>
-   
-      </ul> -->
-</div>
-
+  </article>
 </section>
-<div class="right col-md-3 sidebar">
-      
-<!-- categories -->
-<div class="widget">
-  <h3>Categories</h3>
-  <ul>
-     <li><a class="theme_link" href="http://scalaboy.top/category/du-shu-bi-ji.html"><i class="fa fa-dot-circle-o"></i> 读书笔记</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/ji-zhu-wen-zhang.html"><i class="fa fa-dot-circle-o"></i> 技术文章</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/sui-bi.html"><i class="fa fa-dot-circle-o"></i> 随笔</a>
-    </li>
-    </ul>
-</div>
-
-<!-- Archives -->
-<div class="widget">
-  <h3>Archives</h3>
-  <!-- Get all of the articles with their dates -->
-  <div class="hidden">
-    None
-  </div>
-<!-- If the user indicates they prefer a list.--><ul class="tree">
- <li>
-  <span><i class="fa fa-minus-square-o"></i>2015</span>
-  <ul>
-      <li>
-          <span class="archive-span"><i class="fa fa-plus-square-o"></i>07</span>
-          <ul>
-                  <li class="archive-sidebar-li" style="display: none;">
-                      <a class="theme_link archive-sidebar" href="http://scalaboy.top/suo-hua.html">
-                      琐话</a>
-                  </li>
-          </ul>
-      </li>
-  </ul></li>
-       </ul></div>
-
-<div class="widget">
-  <h3>Tags</h3>
-  <ul>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/sui-bi.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>随笔
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/bo-ke.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>博客
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/java.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>JAVA
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/cheng-xu-yuan-xiu-lian-zhi-dao.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>程序员修炼之道
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/nio.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>NIO
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/array.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Array
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/scala.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Scala
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/du-shu-bi-ji.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>读书笔记
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/pattern-matching.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Pattern Matching
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/jiao-cheng.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>教程
-      </a>
-    </span>
-  </ul>
-</div>
-
-</div>
-</div>
 </div>
     
 
