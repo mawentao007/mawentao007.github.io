@@ -84,170 +84,116 @@
 </header>
 <!-- /Main Nav -->
 
-<div class="container shadow-container-index">
-<div class="row">
+<div class="container shadow-container">
+<section id="content" class="body">
+  <article>
+    <header>
+      <h3 class="entry-title">Shell编程</h3>
+    </header>
 
-<section id="content" class="left col-md-9">
-    <div class="item">
-        <article class="hentry">
-            <header>
-                <h3>
-                    <a href="http://scalaboy.top/gong-liu.html" rel="bookmark"
-                           title="Permalink to 公六">
-                           公六
-                    </a>
-                </h3>
-            </header>
-            <div class="entry-content">
+    <div class="entry-content">
 <footer class="post-info">
-        <a href="category/sui-bi.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 随笔</a> 
-        <span class="label label-default light">04/ 8月/2015 二</span>
-</footer>            <p>Authors：Marvin</p>
-<p>公六，美利达公爵六的简称，昵称“小六”。</p>
-<p>我的这辆小六，大概是13年五六月份买的。那时候，我上一辆勇士560借同学 ...</p>
-                <a class="btn btn-xs theme_link" href="http://scalaboy.top/gong-liu.html">
-                    <i class="fa fa-sign-out"></i>read more</a>
-<p>There are <a href="http://scalaboy.top/gong-liu.html#disqus_thread">comments</a>.</p>            </div><!-- /.entry-content -->
-        </article>
+        <a href="category/ji-zhu-wen-zhang.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 技术文章</a> 
+        <span class="label label-default light">06/ 8月/2015 四</span>
+</footer>      <h4>文件中按行读取</h4>
+<div class="highlight"><pre><span class="x">FILE=&quot;kv.conf&quot; </span>
+<span class="x">while read line;</span>
+<span class="x">do</span>
+<span class="x">         echo &quot;</span><span class="p">$</span><span class="nv">line</span><span class="x">&quot;</span>
+<span class="x">done &lt; </span><span class="p">$</span><span class="nv">FILE</span><span class="x"></span>
+</pre></div>
+
+
+<h4>判断参数个数</h4>
+<div class="highlight"><pre>if [ $# != 1 ]; then
+elif [];then
+else
+fi
+</pre></div>
+
+
+<h4>shell函数定义及调用</h4>
+<p>shell中的函数的参数列表中没有内容，参数传递在调用过程中进行
+    function myFun(){
+        A=$1
+        B=$2
+        ...
+    }</p>
+<p>调用传参如下:</p>
+<div class="highlight"><pre>myFun arg1 arg2
+</pre></div>
+
+
+<p>注意在函数调用的时候不要加"()"。</p>
+<h4>shell函数进阶</h4>
+<p>每个进程都有自己的执行目录，当从shell中执行脚本的时候，脚本实际上是执行在一个新的进程中，因此，“cd”，“pushd”，“popd”等shell内置的命令只能影响当前的进程，相应操作也就无法反映到调用脚本的shell中。</p>
+<p>通过定制自己的shell函数，可以增加自定义内置函数，这样就可以将目录的改变映射到所在shell的进程。</p>
+<p>要想在当前环境中执行脚本，调用方式如下：</p>
+<div class="highlight"><pre><span class="nv">$ </span>. myscript.sh
+</pre></div>
+
+
+<p>使用这种方式，'.'会指定在当前进程中执行脚本，相关的操作就会反映到当前的进程，也就是当前的shell中。而脚本内部定义的函数也将会保留在当前shell的上下文中，可以通过set命令进行查看，也可以通过函数名进行调用。</p>
+<p>如果要移除上下文中的函数，方法如下：</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">unset </span>function_name
+</pre></div>
+
+
+<h4>简单的名称匹配</h4>
+<div class="highlight"><pre><span class="x">if  [[ </span><span class="p">$</span><span class="nv">key</span><span class="x"> = </span><span class="p">$</span><span class="x">1* ]];then</span>
+<span class="x">    else</span>
+<span class="x">fi</span>
+</pre></div>
+
+
+<p>两点注意，一是匹配时候要用双中括号，二是注意'*'的使用。</p>
+<h4>目录检查</h4>
+<p>查看当前名称所指代的是否是一个目录或者文件：</p>
+<div class="highlight"><pre><span class="x">if [ -d &quot;</span><span class="p">$</span><span class="nv">DIRECTORY</span><span class="x">&quot; ]; then</span>
+<span class="x">    </span><span class="err">#</span><span class="x"> Control will enter here if </span><span class="p">$</span><span class="nv">DIRECTORY</span><span class="x"> exists.</span>
+<span class="x">fi</span>
+
+<span class="x">if [ -f &quot;</span><span class="p">$</span><span class="nv">DIRECTORY</span><span class="x">&quot; ]; then</span>
+<span class="x">    </span><span class="err">#</span><span class="x"> Control will enter here if </span><span class="p">$</span><span class="nv">DIRECTORY</span><span class="x"> is file type.</span>
+<span class="x">fi</span>
+
+<span class="x">if [ -L &quot;</span><span class="p">$</span><span class="nv">DIRECTORY</span><span class="x">&quot; ]; then</span>
+<span class="x">    </span><span class="err">#</span><span class="x"> Control will enter here if </span><span class="p">$</span><span class="nv">DIRECTORY</span><span class="x"> is symbolic link.</span>
+<span class="x">fi</span>
+</pre></div>
+
+
+<h4>简单ls功能</h4>
+<div class="highlight"><pre><span class="x">for file in folderName</span>
+<span class="x">do </span>
+<span class="x">    echo </span><span class="p">$</span><span class="nv">file</span><span class="x"></span>
+<span class="x">done</span>
+</pre></div>
+
+
+<h4>参考资料</h4>
+<p><a herf = “http://www.gnu.org/software/bash/manual/bashref.html”>
+http://www.gnu.org/software/bash/manual/bashref.html
+</a></p>
+<p>```</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'scalaboytop';
+        var disqus_identifier = 'shellbian-cheng.html';
+        var disqus_url = 'http://scalaboy.top/shellbian-cheng.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//scalaboytop.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
-<!--   <ul class="pagination">
-    <li id="prev" class="prev disabled"><a class="theme_link" rel="prev">&larr; Previous</a></li>
-    <li id="next" class="next"><a class="theme_link" rel="next">&rarr; Next</a></li>
-  </ul> -->
 
-<div class="paginator">
-	<ul class="pagination">
-    </ul>
-    <ul>
-    <!-- <li>  1 / 1</li>
-   
-      </ul> -->
-</div>
-
+  </article>
 </section>
-<div class="right col-md-3 sidebar">
-      
-<!-- categories -->
-<div class="widget">
-  <h3>Categories</h3>
-  <ul>
-     <li><a class="theme_link" href="http://scalaboy.top/category/du-shu-bi-ji.html"><i class="fa fa-dot-circle-o"></i> 读书笔记</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/ge-ren-xiang-mu.html"><i class="fa fa-dot-circle-o"></i> 个人项目</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/ji-zhu-wen-zhang.html"><i class="fa fa-dot-circle-o"></i> 技术文章</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/sui-bi.html"><i class="fa fa-dot-circle-o"></i> 随笔</a>
-    </li>
-    </ul>
-</div>
-
-<!-- Archives -->
-<div class="widget">
-  <h3>Archives</h3>
-  <!-- Get all of the articles with their dates -->
-  <div class="hidden">
-    None
-  </div>
-<!-- If the user indicates they prefer a list.--><ul class="tree">
- <li>
-  <span><i class="fa fa-minus-square-o"></i>2015</span>
-  <ul>
-      <li>
-          <span class="archive-span"><i class="fa fa-plus-square-o"></i>08</span>
-          <ul>
-                  <li class="archive-sidebar-li" style="display: none;">
-                      <a class="theme_link archive-sidebar" href="http://scalaboy.top/gong-liu.html">
-                      公六</a>
-                  </li>
-          </ul>
-      </li>
-  </ul></li>
-       </ul></div>
-
-<div class="widget">
-  <h3>Tags</h3>
-  <ul>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/jiao-cheng.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>教程
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/bo-ke.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>博客
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/cheng-xu-yuan-xiu-lian-zhi-dao.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>程序员修炼之道
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/shell.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>shell
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/ri-zhi.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>日志
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/mu-lu.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>目录
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/scala.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Scala
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/pattern-matching.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Pattern Matching
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/nio.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>NIO
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/shan-di-che.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>山地车
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/xiao-gong-ju.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>小工具
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/java.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>JAVA
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/du-shu-bi-ji.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>读书笔记
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/sui-bi.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>随笔
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/array.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Array
-      </a>
-    </span>
-  </ul>
-</div>
-
-</div>
-</div>
 </div>
     
 
