@@ -154,7 +154,7 @@ fi
 </pre></div>
 
 
-<p>两点注意，一是匹配时候要用双中括号，二是注意'*'的使用。</p>
+<p>两点注意，一是匹配时候要用双中括号，二是注意“*” 的使用。</p>
 <h4>&#9734;&nbsp;目录检查</h4>
 
 <p>查看当前名称所指代的是否是一个目录或者文件：</p>
@@ -181,9 +181,51 @@ fi
 </pre></div>
 
 
-<h4>&#9734;&nbsp;参考资料</h4>
+<h4>&#9734;&nbsp;管道</h4>
 
-<p><a href = “http://www.gnu.org/software/bash/manual/bashref.html”>
+<div class="highlight"><pre>command1  [ | or |&amp; ] command2
+</pre></div>
+
+
+<p>其中<em>'|&amp;'</em>表示将第一个命令的标准输出连同错误都作为第二个命令的标准输入。
+<hr></p>
+<h4>&#9734;&nbsp;&结尾</h4>
+
+<p>'&amp;' 结尾的命令，shell将会在子shell中异步执行相应的命令，也就是通常说的“后台执行”。</p>
+<p><hr>
+<h4>&#9734;&nbsp;循环</h4></p>
+<p>until</p>
+<div class="highlight"><pre>until test-commands;
+do   
+      commands;
+done
+</pre></div>
+
+
+<p>while</p>
+<div class="highlight"><pre>while test-commands; 
+do 
+    consequent-commands; 
+done
+</pre></div>
+
+
+<p>for</p>
+<div class="highlight"><pre>for name [ [in [words …] ] ; ] 
+do 
+    commands; 
+done
+
+for (( expr1 ; expr2 ; expr3 )) ;
+do 
+    commands ; 
+done
+</pre></div>
+
+
+<p><em>break</em> and <em>continue</em>用法类似c语言的用法，可以在循环中起到控制作用。
+<h4>&#9734;&nbsp;参考资料</h4>
+<a href = “http://www.gnu.org/software/bash/manual/bashref.html”>
 http://www.gnu.org/software/bash/manual/bashref.html
 </a></p>
     </div><!-- /.entry-content -->
