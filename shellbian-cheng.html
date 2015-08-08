@@ -105,6 +105,8 @@
 </pre></div>
 
 
+<hr>
+
 <h4>&#9734;&nbsp;判断参数个数</h4>
 
 <div class="highlight"><pre>if [ $# != 1 ]; then
@@ -113,6 +115,8 @@ else
 fi
 </pre></div>
 
+
+<hr>
 
 <h4>&#9734;&nbsp;shell函数定义及调用</h4>
 
@@ -130,7 +134,8 @@ fi
 </pre></div>
 
 
-<p>注意在函数调用的时候不要加"()"。</p>
+<p>注意在函数调用的时候不要加"()"。
+<hr></p>
 <h4>&#9734;&nbsp;shell函数进阶</h4>
 
 <p>每个进程都有自己的执行目录，当从shell中执行脚本的时候，脚本实际上是执行在一个新的进程中，因此，“cd”，“pushd”，“popd”等shell内置的命令只能影响当前的进程，相应操作也就无法反映到调用脚本的shell中。</p>
@@ -146,6 +151,8 @@ fi
 </pre></div>
 
 
+<hr>
+
 <h4>&#9734;&nbsp;简单的名称匹配</h4>
 
 <div class="highlight"><pre><span class="x">if  [[ </span><span class="p">$</span><span class="nv">key</span><span class="x"> = </span><span class="p">$</span><span class="x">1* ]];then</span>
@@ -154,7 +161,8 @@ fi
 </pre></div>
 
 
-<p>两点注意，一是匹配时候要用双中括号，二是注意“*” 的使用。</p>
+<p>两点注意，一是匹配时候要用双中括号，二是注意“*” 的使用。
+<hr></p>
 <h4>&#9734;&nbsp;目录检查</h4>
 
 <p>查看当前名称所指代的是否是一个目录或者文件：</p>
@@ -172,6 +180,8 @@ fi
 </pre></div>
 
 
+<hr>
+
 <h4>&#9734;&nbsp;简单ls功能</h4>
 
 <div class="highlight"><pre><span class="x">for file in folderName</span>
@@ -180,6 +190,8 @@ fi
 <span class="x">done</span>
 </pre></div>
 
+
+<hr>
 
 <h4>&#9734;&nbsp;管道</h4>
 
@@ -194,7 +206,7 @@ fi
 <p>'&amp;' 结尾的命令，shell将会在子shell中异步执行相应的命令，也就是通常说的“后台执行”。</p>
 <p><hr>
 <h4>&#9734;&nbsp;循环</h4></p>
-<p>until</p>
+<p><strong>until</strong></p>
 <div class="highlight"><pre>until test-commands;
 do   
       commands;
@@ -202,7 +214,7 @@ done
 </pre></div>
 
 
-<p>while</p>
+<p><strong>while</strong></p>
 <div class="highlight"><pre>while test-commands; 
 do 
     consequent-commands; 
@@ -210,7 +222,7 @@ done
 </pre></div>
 
 
-<p>for</p>
+<p><strong>for</strong></p>
 <div class="highlight"><pre>for name [ [in [words …] ] ; ] 
 do 
     commands; 
@@ -224,8 +236,71 @@ done
 
 
 <p><em>break</em> and <em>continue</em>用法类似c语言的用法，可以在循环中起到控制作用。
+<hr></p>
+<h4>&#9734;&nbsp;分支结构</h4>
+
+<p><strong>if</strong></p>
+<div class="highlight"><pre>if test-commands; then
+  consequent-commands;
+[elif more-test-commands; then
+  more-consequents;]
+[else alternate-consequents;]
+fi
+</pre></div>
+
+
+<p><strong>case</strong> 这个结构略微复杂一点，格式和示例如下：</p>
+<div class="highlight"><pre><span class="x">case word in [ [(] pattern [| pattern]…) command-list ;;]… esac</span>
+
+<span class="x">echo -n &quot;Enter the name of an animal: &quot;</span>
+<span class="x">read ANIMAL</span>
+<span class="x">echo -n &quot;The </span><span class="p">$</span><span class="nv">ANIMAL</span><span class="x"> has &quot;</span>
+<span class="x">case </span><span class="p">$</span><span class="nv">ANIMAL</span><span class="x"> in</span>
+<span class="x">horse | dog | cat) echo -n &quot;four&quot;;;</span>
+<span class="x">man | kangaroo ) echo -n &quot;two&quot;;;</span>
+<span class="x">*) echo -n &quot;an unknown number of&quot;;;</span>
+<span class="x">esac</span>
+<span class="x">echo &quot; legs.&quot;</span>
+</pre></div>
+
+
+<p>其中必须注意的是，每个分支结尾用‘;;’，表示一旦某一个分支匹配成功就不再继续匹配；‘;&amp;’表示对紧随当前分支的下一个分支的命令也同时执行；‘;;&amp;’表示需要检查下一个分支是否匹配，匹配的话执行相应命令。</p>
+<p><strong>select</strong></p>
+<div class="highlight"><pre><span class="x">select name [in words …]; do commands; done</span>
+
+<span class="x">eg.</span>
+<span class="x">select fname in *;</span>
+<span class="x">do</span>
+<span class="x">    echo  </span><span class="p">$</span><span class="nv">fname</span><span class="x"> \(</span><span class="p">$</span><span class="nv">REPLY</span><span class="x">\)</span>
+<span class="x">break;</span>
+<span class="x">done</span>
+</pre></div>
+
+
+<p>根据用户输入选项，从若干个选项中选择一个，将值赋给name。例子中$REPLY表示用户的输入。备选项可以由命令行输入，用$@读取。例子表示从当前目录的文件中选择一个，打印出所选的文件名和所选项。</p>
+<p><strong>（（...））</strong></p>
+<div class="highlight"><pre>(( expression ))  等同于
+let &quot;expression&quot;
+
+eg.
+if (( 1 + 2 )) ;    //if let &quot;1 + 2&quot;;
+then                                                                            
+    echo &quot;true&quot;
+fi
+</pre></div>
+
+
+<p>计算括号中表达式的值，根据值是否为０返回０或者１，参见例题。要注意括号内侧的两个空格。</p>
+<p><strong>[[...]]</strong></p>
+<div class="highlight"><pre>[[ expression ]]
+</pre></div>
+
+
+<p>根据表达式的真假值返回０或者１。这个用法比较复杂，可以用来进行模式匹配的相关判断，参见http://www.gnu.org/software/bash/manual/bashref.html#Looping-Constructs。
+<hr></p>
 <h4>&#9734;&nbsp;参考资料</h4>
-<a href = “http://www.gnu.org/software/bash/manual/bashref.html”>
+
+<p><a href = “http://www.gnu.org/software/bash/manual/bashref.html”>
 http://www.gnu.org/software/bash/manual/bashref.html
 </a></p>
     </div><!-- /.entry-content -->
