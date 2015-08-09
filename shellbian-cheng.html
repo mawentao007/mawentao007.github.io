@@ -298,6 +298,40 @@ fi
 
 <p>根据表达式的真假值返回０或者１。这个用法比较复杂，可以用来进行模式匹配的相关判断，参见http://www.gnu.org/software/bash/manual/bashref.html#Looping-Constructs。
 <hr></p>
+<h4>&#9734;&nbsp;数组</h4>
+
+<div class="highlight"><pre>declare -a arr   #声明数组，可以省略。
+for (( i=0;i<span class="nt">&lt;10</span><span class="err">;i++</span> <span class="err">));</span> 
+<span class="err">do</span>
+        <span class="err">arr[$i]=$i</span>
+<span class="err">done</span>
+<span class="err">for</span> <span class="err">((</span> <span class="na">i=</span><span class="s">0;i&lt;10;i++</span> <span class="err">));</span> 
+<span class="err">do</span>
+        <span class="err">echo</span> <span class="err">${arr[$i]}</span>
+<span class="err">done</span>
+</pre></div>
+
+
+<hr>
+
+<h4>&#9734;&nbsp;简单读取</h4>
+
+<p>&#9723;&nbsp;<strong>ReadArray</strong>
+从文件中读取数据存入数组中。</p>
+<div class="highlight"><pre>readarray x <span class="nt">&lt; </span><span class="nv">$FILE</span><span class="nt">                                             </span>
+<span class="nt">echo</span> <span class="cp">${</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="cp">}</span>
+</pre></div>
+
+
+<p>&#9723;&nbsp;<strong>Read</strong>
+可以从文件或者标准输入读取数据，注意一次读取的默认也是一整行，其它模式参见相关文档。</p>
+<div class="highlight"><pre><span class="x">read x                                              </span>
+<span class="x">echo </span><span class="p">$</span><span class="nv">x</span><span class="x"></span>
+</pre></div>
+
+
+<hr>
+
 <h4>&#9734;&nbsp;参考资料</h4>
 
 <p><a href = “http://www.gnu.org/software/bash/manual/bashref.html”>
