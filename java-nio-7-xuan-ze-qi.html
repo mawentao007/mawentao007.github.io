@@ -95,9 +95,8 @@
 <footer class="post-info">
         <a href="category/ji-zhu-wen-zhang.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 技术文章</a> 
         <span class="label label-default light">10/ 8月/2015 一</span>
-</footer>      <p>选择器(selector)是Java NIO中的重要组件，负责监控一个或者多个通道的状态，并且决定相关通道是否准备好读写操作。通过这种方式，一个线程可以管理多个通道，也就是管理多个网络连接。</p>
-<hr>
-
+</footer>      <p>选择器(selector)是Java NIO中的重要组件，负责监控一个或者多个通道的状态，并且决定相关通道是否准备好读写操作。通过这种方式，一个线程可以管理多个通道，也就是管理多个网络连接。
+<hr></p>
 <h4>&#9734;&nbsp;为什么使用选择器</h4>
 
 <p>利用单个线程监控多个通道的好处之一就是可以节约线程。事实上，用户甚至可以用一个线程监控所有通道。因为线程的切换对于操作系统来讲代价比较昂贵，线程同时也会消耗一部分系统资源，因此在满足需求的情况下，对于线程的使用原则是越少越好。</p>
@@ -115,7 +114,7 @@
 </pre></div>
 
 
-</hr>
+<hr>
 
 <h4>&#9734;&nbsp;将通道注册到选择器</h4>
 
@@ -146,23 +145,23 @@ SelectionKey key = channel.register(selector, SelectionKey.OP_READ);
 </pre></div>
 
 
-<p></hr>
+<p><hr>
 <h4>&#9734;&nbsp;选择关键字</h4></p>
-</hr>
+<hr>
 
 <h4>&#9734;&nbsp;通过选择器选择通道</h4>
 
-</hr>
+<hr>
 
 <h4>&#9734;&nbsp;唤醒</h4>
 
-<p></hr>
+<p><hr>
 <h4>&#9734;&nbsp;关闭</h4></p>
-</hr>
+<hr>
 
 <h4>&#9734;&nbsp;完整事例</h4>
 
-</hr>
+<hr>
     </div><!-- /.entry-content -->
     <div class="comments">
       <div id="disqus_thread"></div>
