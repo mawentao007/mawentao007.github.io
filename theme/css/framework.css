@@ -182,6 +182,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="pho
 }
 a.btn {
   transition:none !important;
+  color:chocolate;
 }
 a.btn i {
   padding-right:10px;
