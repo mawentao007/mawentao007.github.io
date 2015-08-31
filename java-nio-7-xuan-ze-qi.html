@@ -105,8 +105,7 @@
         <a href="category/ji-zhu-wen-zhang.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 技术文章</a> 
         <span class="label label-default light">10/ 8月/2015 一</span>
 </footer>      <p><a href=http://tutorials.jenkov.com/java-nio/selectors.html>原文链接</a></p>
-<p>选择器(selector)是Java NIO中的重要组件，负责监控一个或者多个通道的状态，并且决定相关通道是否准备好读写操作。通过这种方式，一个线程可以管理多个通道，也就是管理多个网络连接。
-<hr></p>
+<p>选择器(selector)是Java NIO中的重要组件，负责监控一个或者多个通道的状态，并且决定相关通道是否准备好读写操作。通过这种方式，一个线程可以管理多个通道，也就是管理多个网络连接。</p>
 <h4>&#9734;&nbsp;为什么使用选择器</h4>
 
 <p>利用单个线程监控多个通道的好处之一就是可以节约线程。事实上，用户甚至可以用一个线程监控所有通道。因为线程的切换对于操作系统来讲代价比较昂贵，线程同时也会消耗一部分系统资源，因此在满足需求的情况下，对于线程的使用原则是越少越好。</p>
@@ -116,15 +115,11 @@
     <img class=embeded-img src="./images/overview-selectors.png">
 </p>
 
-<hr>
-
 <h4>&#9734;&nbsp;创建选择器</h4>
 
 <div class="highlight"><pre>Selector selector = Selector.open();
 </pre></div>
 
-
-<hr>
 
 <h4>&#9734;&nbsp;将通道注册到选择器</h4>
 
@@ -155,8 +150,8 @@ SelectionKey key = channel.register(selector, SelectionKey.OP_READ);
 </pre></div>
 
 
-<p><hr>
-<h4>&#9734;&nbsp;选择关键字</h4></p>
+<h4>&#9734;&nbsp;选择关键字</h4>
+
 <p>正如前面所介绍的，当用户利用register()注册通道到选择器，姜宏返回一个SelectionKey对象。这个SelectionKey对象包含一系列有意思的属性：</p>
 <ul>
 <li>The interest set</li>
@@ -212,8 +207,6 @@ Object attachedObj = selectionKey.attachment();
 </pre></div>
 
 
-<hr>
-
 <h4>&#9734;&nbsp;通过选择器选择通道</h4>
 
 <p>注册一个或者多个channel到selector之后就可以调用一种select()方法，这些方法用来返回已经触发并且用户感兴趣的事件所对应的通道（connect,accept,read or write)。如下有几种select()方法：</p>
@@ -262,17 +255,14 @@ while(keyIterator.hasNext()) {
 
 <p>这个循环迭代访问selected key set中的keys。对于每个key，测试相关事件是否有通道已经就绪。</p>
 <p>注意keyIterator.remove()调用。Selector不会主动移出SelectionKey实例，需要用户在处理完channel之后手动移出。下一次通道就绪，选择器会再次将响应的key加入到selected key set。</p>
-<p>channel通过SelectionKey.channel()方法返回，这个channel就是要处理的channel。
-<hr></p>
+<p>channel通过SelectionKey.channel()方法返回，这个channel就是要处理的channel。</p>
 <h4>&#9734;&nbsp;唤醒</h4>
 
 <p>调用select()方法的线程被阻塞，不过利用Selector.wakeup()方法，即使没有channel准备就绪，也可以使其脱离阻塞状态。不过该方法需要通过另一个线程进行调用，调用之后被阻塞的线程会立刻返回。</p>
 <p>如果没有线程被阻塞，也就是没有唤醒任何线程，那么下一个调用select()的线程会被立刻唤醒。</p>
-<p><hr>
-<h4>&#9734;&nbsp;关闭</h4></p>
-<p>调用Selector.close()方法可以立刻关闭Selector，该方法会使所有注册到相应Selector的SelectionKey实例失效，但是channel不会被关闭。</p>
-<hr>
+<h4>&#9734;&nbsp;关闭</h4>
 
+<p>调用Selector.close()方法可以立刻关闭Selector，该方法会使所有注册到相应Selector的SelectionKey实例失效，但是channel不会被关闭。</p>
 <h4>&#9734;&nbsp;完整示例</h4>
 
 <div class="highlight"><pre>Selector selector = Selector.open();
@@ -312,9 +302,6 @@ while(true) {
   }
 }
 </pre></div>
-
-
-<hr>
     </div><!-- /.entry-content -->
     <div class="share">
       <span>分享到</span>
