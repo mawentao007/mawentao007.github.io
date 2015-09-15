@@ -96,209 +96,123 @@
 </header>
 <!-- /Main Nav -->
 
-<div class="container shadow-container-index">
-<div class="row">
+<div class="container shadow-container">
+<section id="content" class="body">
+  <article>
+    <header>
+      <h4 class="entry-title">Java NIO-8 文件通道</h4>
+    </header>
 
-<section id="content" class="left col-md-9">
-    <div class="item" onclick="location.href='http://scalaboy.top/gong-liu.html'" style="cursor:pointer;">
-        <article class="hentry">
-            <header>
-                <h4>
-                           公六
-                </h4>
-            </header>
-            <div class="entry-content index">
- <!--            <footer class="post-info">
-        <a href="category/sui-bi.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 随笔</a> 
-        <span class="label label-default light">04/ 8月/2015 二</span>
-</footer> -->
-            <p>Authors：Marvin</p>
-<p>公六，美利达公爵六的简称，昵称“小六”。</p>
-<p>我的这辆小六，大概是13年五六月份买的。那时候，我上一辆勇士560借同学 ...</p>
-                <a class="btn btn-xs theme_link" href="http://scalaboy.top/gong-liu.html">
-                    <i class="fa fa-sign-out"></i>read more</a>
-<!-- <p>There are <a href="http://scalaboy.top/gong-liu.html#disqus_thread">comments</a>.</p> -->
-<p>
-	<a href="http://scalaboy.top/gong-liu.html#ds-thread">
-		<span class="ds-thread-count" data-thread-key='公六' data-count-type="comments"></span>
-	</a>
-</p>            </div><!-- /.entry-content -->
-        </article>
+    <div class="entry-content">
+<footer class="post-info">
+        <a href="category/ji-zhu-wen-zhang.html" class="label label-default light"><i class="fa fa-dot-circle-o"></i> 技术文章</a> 
+        <span class="label label-default light">15/ 9月/2015 二</span>
+</footer>      <p><a href=http://tutorials.jenkov.com/java-nio/file-channel.html>原文链接</a></p>
+<p>Java NIO 文件通道是用来连接文件的通道。通过文件通道可以对文件进行读写操作。Java NIO文件通道是Java IO API之外的读写文件的另一个选择。</p>
+<h4>&#9734;&nbsp;打开文件通道</h4>
+
+<p>使用文件通道之前必须要先打开一个通道。文件通道无法直接打开，必须通过InputStream、OutputStream或者RandomAccessFile来打开。利用RandomAccessFile打开文件通道的代码如下：</p>
+<div class="highlight"><pre>RandomAccessFile aFile     = new RandomAccessFile(&quot;data/nio-data.txt&quot;, &quot;rw&quot;);
+FileChannel      inChannel = aFile.getChannel();
+</pre></div>
+
+
+<h4>&#9734;&nbsp;从文件通道读取数据</h4>
+
+<p>从文件通道读取数据需要调用一种<em>read()</em>方法：</p>
+<div class="highlight"><pre>ByteBuffer buf = ByteBuffer.allocate(48);
+
+int bytesRead = inChannel.read(buf);
+</pre></div>
+
+
+<p>首先分配一个缓冲区，从文件通道中将数据读入该缓冲区。之后调用<em>FileChannel.read()</em>方法进行读取。该方法从文件通道中将数据读入缓冲区。返回值表示写入缓冲区的字节数。如果返回-1，说明到达了文件结尾。</p>
+<h4>&#9734;&nbsp;将数据写入文件通道</h4>
+
+<p>将数据写入文件通道要利用到<em>FileChannel.write()</em>方法，该方法需要一个Buffer作为参数，如下：</p>
+<div class="highlight"><pre>String newData = &quot;New String to write to file...&quot; + System.currentTimeMillis();
+
+ByteBuffer buf = ByteBuffer.allocate(48);
+buf.clear();
+buf.put(newData.getBytes());
+
+buf.flip();
+
+while(buf.hasRemaining()) {
+    channel.write(buf);
+}
+</pre></div>
+
+
+<p>注意while循环中<em>FileChannel.write()</em>的调用方式。因为<em>write()</em>方法写入文件通道的字节数无法确定，因此需要重复调用<em>write()</em>方法知道Buffer中没有可以进行写入的数据。</p>
+<h4>&#9734;&nbsp;关闭文件通道</h4>
+
+<div class="highlight"><pre>channel.close();
+</pre></div>
+
+
+<h4>&#9734;&nbsp;文件通道中的位置</h4>
+
+<p>对于文件通道的读写都会在特定位置进行，用户可以通过<em>position()</em>方法获得通道对象当前的位置，也可以通过<em>position(long pos)</em>方法指定通道中的位置。如下：
+    long pos channel.position();</p>
+<div class="highlight"><pre>channel.position(pos +123);
+</pre></div>
+
+
+<p>如果用户将位置设置为文件结尾，并尝试从通道中读取数据，那么将会返回-1。</p>
+<p>如果用户将位置设置为文件结尾并尝试写入通道，文件将会扩展并写入数据。这可能会导致“file hole”，磁盘上的文件存在空洞。</p>
+<h4>&#9734;&nbsp;文件通道的尺寸</h4>
+
+<p><em>size()</em>方法可以返回文件通道连接的文件的大小。</p>
+<div class="highlight"><pre>long fileSize = channel.size();
+</pre></div>
+
+
+<h4>&#9734;&nbsp;文件通道截取</h4>
+
+<p><em>FileChannel.truncate()</em>方法可以截取文件的特定长度。</p>
+<div class="highlight"><pre>channel.truncate(1024);
+</pre></div>
+
+
+<p>该示例截取了文件的1024字节内容。</p>
+<h4>&#9734;&nbsp;文件通道强制执行</h4>
+
+<p><em>FileChannel.force()</em>方法将所有未写入数据从通道中“刷”到磁盘上。操作系统为了提升性能会在内存中缓存一部分数据，因此用户无法保证写入通道中的数据真正写入到磁盘上。而调用<em>force()</em>方法之后就不存在这个问题了。</p>
+<p><em>force()</em>方法有一个布尔值作为参数，标明元数据是否也需要flush。eg.</p>
+<div class="highlight"><pre>channel.force(true);
+</pre></div>
+    </div><!-- /.entry-content -->
+    <div class="share">
+      <span>分享到</span>
+      <div class="share-group">
+      <a class="weibo" href="http://share.baidu.com/s?type=text&amp;searchPic=1&amp;sign=on&amp;to=tsina&amp;url=http://scalaboy.top/java-nio-8-wen-jian-tong-dao.html&amp;title=Java NIO-8 文件通道&amp;key=595885820" ref="nofollow" target="_blank">
+        <i class="fa fa-weibo">
+        </i>
+      </a>
+      </div>
     </div>
-<!--   <ul class="pagination">
-    <li id="prev" class="prev disabled"><a class="theme_link" rel="prev">&larr; Previous</a></li>
-    <li id="next" class="next"><a class="theme_link" rel="next">&rarr; Next</a></li>
-  </ul> -->
 
-<div class="paginator">
-	<ul class="pagination">
-    </ul>
-    <ul>
-    <!-- <li>  1 / 1</li>
-   
-      </ul> -->
-</div>
+    <!--     <div class="comments">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'scalaboytop';
+        var disqus_identifier = 'java-nio-8-wen-jian-tong-dao.html';
+        var disqus_url = 'http://scalaboy.top/java-nio-8-wen-jian-tong-dao.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//scalaboytop.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+ -->
 
+    <div class="ds-thread" data-thread-key='Java NIO-8 文件通道' data-title='Java NIO-8 文件通道' data-url= 'http://scalaboy.top/java-nio-8-wen-jian-tong-dao.html'></div>
+
+  </article>
 </section>
-<div class="right col-md-3 sidebar">
-
-<div class="widget">
-  <h3>Categories</h3>
-  <ul>
-     <li><a class="theme_link" href="http://scalaboy.top/category/du-shu-bi-ji.html"><i class="fa fa-dot-circle-o"></i> 读书笔记</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/ge-ren-xiang-mu.html"><i class="fa fa-dot-circle-o"></i> 个人项目</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/ji-zhu-wen-zhang.html"><i class="fa fa-dot-circle-o"></i> 技术文章</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/sui-bi.html"><i class="fa fa-dot-circle-o"></i> 随笔</a>
-    </li>
-    <li><a class="theme_link" href="http://scalaboy.top/category/xue-xi-zi-yuan.html"><i class="fa fa-dot-circle-o"></i> 学习资源</a>
-    </li>
-    </ul>
-</div>
-
-<!-- Archives -->
-<div class="widget">
-  <h3>Archives</h3>
-  <!-- Get all of the articles with their dates -->
-  <div class="hidden">
-    None
-  </div>
-<!-- If the user indicates they prefer a list.--><ul class="tree">
- <li>
-  <span><i class="fa fa-minus-square-o"></i>2015</span>
-  <ul>
-      <li>
-          <span class="archive-span"><i class="fa fa-plus-square-o"></i>08</span>
-          <ul>
-                  <li class="archive-sidebar-li" style="display: none;">
-                      <a class="theme_link archive-sidebar" href="http://scalaboy.top/gong-liu.html">
-                      公六</a>
-                  </li>
-          </ul>
-      </li>
-  </ul></li>
-       </ul></div>
-
-<div class="widget">
-  <h3>Tags</h3>
-  <ul>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/pattern-matching.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Pattern Matching
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/xiao-gong-ju.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>小工具
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/jiao-cheng.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>教程
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/project.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>project
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/code.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>code
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/jia-kao.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>驾考
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/du-shu-bi-ji.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>读书笔记
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/array.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Array
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/shell.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>shell
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/ri-zhi.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>日志
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/shan-di-che.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>山地车
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/mu-lu.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>目录
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/scala.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Scala
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/java.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>JAVA
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/cheng-xu-yuan-xiu-lian-zhi-dao.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>程序员修炼之道
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/open-source.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>open source
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/recommended-system.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>recommended system
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/bo-ke.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>博客
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/sui-bi.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>随笔
-      </a>
-    </span>
-    <span class="tag-1">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/nio.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>NIO
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/git.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>Git
-      </a>
-    </span>
-    <span class="tag-4">
-      <a class="sidebar-tag" href="http://scalaboy.top/tag/tui-jian-xi-tong.html">
-        <i class=" fa fa-tag fa-fw fa-lg"></i>推荐系统
-      </a>
-    </span>
-  </ul>
-</div>
-
-</div>
-</div>
 </div>
     
 
